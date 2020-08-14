@@ -3,4 +3,8 @@ class Recipe < ApplicationRecord
     belongs_to :starter_recipe, class_name: "Recipe", optional: true
     has_many :user_recipes
     has_many :users, through: :user_recipes
+
+    def add_to_cookbook
+        
+    end
 end
