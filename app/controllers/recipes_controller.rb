@@ -10,7 +10,8 @@ class RecipesController < ApplicationController
     end
 
     def new
-    @recipe = Recipe.new
+        @original_recipe = Recipe.find(params[:format])
+        @recipe = Recipe.new
     end
 
     def create
@@ -21,7 +22,7 @@ class RecipesController < ApplicationController
     private
 
     def recipe_params
-        params.require(:recipe).permit(:starter_recipe_id, :name, :description, :image_url, :serving_size, :calorie_count, :instructions, :is_starter, :chef_name)
+        params.require(:recipe).permit(:starter_recipe_id, :name, :description, :image_url, :serving_size, :calorie_count, :instructions, :chef_name).with_defaults(is_starter?: false)
     end
 
 
