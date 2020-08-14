@@ -7,6 +7,10 @@ class RecipesController < ApplicationController
     def show
         @recipe = Recipe.find(params[:id])
         @steps = @recipe.instructions.split("\n")
+        if @recipe.is_starter? == false &&
+            @recipe.chef_name == nil
+            @recipe.chef_name = @recipe.user.name
+        end
     end
 
     def new
