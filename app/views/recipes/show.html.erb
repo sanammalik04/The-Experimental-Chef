@@ -17,9 +17,18 @@
         <% end %>
     </div>
 
-<h3>Save This Recipe to Your Cookbook!<h3>
-<h3>Create your own "<%= @recipe.name %>" Fusion Recipe!</h3>
-<h3>Browse Our Users' Unique Twists on "<%= @recipe.name %>":</h3>
+    <% if @recipe.is_starter? == true%>
+    <h3>Save This Recipe to Your Cookbook!<h3>
+    <h3>Create your own "<%= @recipe.name %>" Fusion Recipe!</h3>
+    <h3>Browse Our Users' Unique Twists on "<%= @recipe.name %>":</h3>
+    <h2><%@recipe.modified_recipes.each do |modified_recipe|%></h2>
+    <%=link_to modified_recipe.name, recipe_path(modified_recipe) %>
+    <%end%>
+        <%end%>
+        <%if @recipe.is_starter? == false%>
+        <%=link_to @recipe.starter_recipe.name, recipe_path(@recipe.starter_recipe)%>
+        <%end%>
+
 
 
 

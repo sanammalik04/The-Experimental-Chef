@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
     def index
-        @recipes = Recipe.all
+        @recipes = Recipe.where(is_starter?: true)
     end
 
     def show
