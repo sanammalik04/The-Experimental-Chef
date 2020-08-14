@@ -8,9 +8,10 @@
 User.destroy_all
 Recipe.destroy_all
 
+
 User.create(name: "Sanam", user_name: "Sanam04", password: "password")
 Recipe.create(
-    starter_recipe_id: 1,
+    is_starter?: true,
     name: "Spaghetti with Meatballs",
     description: "Carbohydrate avoidance be damned: pasta with meatballs is the perfect culinary counter to the cruel world. Just looking at a slippery, tomato-sauced tangle of spaghetti topped with juicy toothsome meatballs makes you feel better; eating it is the instant antidote to whatever ails you. The recipe here makes more sauce, perhaps, than you'd normally want to use to dress a pound of pasta, but when I sit down to eat with the children I want to make sure I'm not going to have to get up and make them anything else to eat before they go to bed.",
     serving_size: 4,
