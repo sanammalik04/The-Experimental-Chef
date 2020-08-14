@@ -1,5 +1,7 @@
 <h1><%= @recipe.name %></h1>
 
+<h4>Chef: <%= @recipe.chef_name %></h4>
+
 <div>Serving Size: <%= @recipe.serving_size%><div><br>
 
 <div><%= @recipe.description %></div><br>
@@ -8,7 +10,17 @@
 
 <div>Calories Per Serving: <%= @recipe.calorie_count%></div>
 
-<p> Instructions: <%= @recipe.instructions %></p>
+    <h2>Instructions: </h2>
+    <div>
+        <% @steps.each do |sentence| %>
+            <div><%= sentence%></div><br>
+        <% end %>
+    </div>
+
+<h3>Save This Recipe to Your Cookbook!<h3>
+<h3>Create your own "<%= @recipe.name %>" Fusion Recipe!</h3>
+<h3>Browse Our Users' Unique Twists on "<%= @recipe.name %>":</h3>
+
 
 
 

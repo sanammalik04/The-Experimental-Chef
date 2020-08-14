@@ -6,5 +6,6 @@ class RecipesController < ApplicationController
 
     def show
         @recipe = Recipe.find(params[:id])
+        @steps = @recipe.instructions.split("\n")
     end
 end
