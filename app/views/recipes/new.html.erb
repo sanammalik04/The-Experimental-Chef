@@ -17,6 +17,6 @@
 <%= f.label :chef_name, "Your Name"%><br>
 <%=f.text_field :chef_name%><br><br>
 <%= f.hidden_field :starter_recipe_id, :value => @original_recipe.id%>
-<%= f.hidden_field :user, :value => @user%>
+<%= f.hidden_field :user_id, :value => @user.id %>
 <%=f.submit "Save Your Version of the Recipe"%><br></h2>
 <%end%>
