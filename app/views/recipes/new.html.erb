@@ -1,0 +1,20 @@
+<h1>Create Your Own Recipe</h1>
+
+<h2>
+<%= form_for @recipe do |f|%><br>
+<%= f.label :name%><br>
+<%=f.text_field :name%><br>
+<%= f.label :description%><br>
+<%=f.text_field :description%><br>
+<%= f.label :image_url%><br>
+<%=f.text_field :image_url%><br>
+<%= f.label :seving_size%><br>
+<%=f.text_field :serving_size%><br>
+<%= f.label :calorie_count%><br>
+<%=f.text_field :calorie_count%><br>
+<%= f.label :instructions%><br>
+<%=f.text_field :instructions%><br>
+<%= f.label :chef_name, "Your Name"%><br>
+<%=f.text_field :chef_name%><br><br>
+<%=f.submit "Save Your Version of the Recipe"%><br></h2>
+<%end%>
