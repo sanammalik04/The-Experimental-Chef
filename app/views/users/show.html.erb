@@ -1,0 +1,8 @@
+<h1>Profile page for <%= @user.user_name %> </h1>
+
+<h3>All Recipes Created by <%= @user.user_name %><h3>
+<ul>
+    <% @user.recipes.each do |recipe| %>
+        <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+    <% end %>
+</ul>
