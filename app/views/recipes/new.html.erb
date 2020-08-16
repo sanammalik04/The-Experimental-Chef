@@ -1,6 +1,6 @@
 <h1>Create Your Own <%= @original_recipe.name %></h1>
 
-<h2>
+<h4>
 <%= form_for @recipe do |f|%><br>
 <%= f.label :name%><br>
 <%=f.text_field :name, value: @original_recipe.name %><br>
@@ -18,7 +18,11 @@
 <%=f.text_area :instructions, value: @original_recipe.instructions%><br>
 <%= f.label :chef_name, "Your Name"%><br>
 <%=f.text_field :chef_name%><br><br>
+<%= f.label :cuisine_tags, "Cuisine Type" %>
+<div><%= f.collection_check_boxes :tag_ids, Tag.all_cuisine_tags, :id, :name %></div><br>
+<%= f.label :dietary_tags, "Dietary Type" %>
+<div><%= f.collection_check_boxes :tag_ids, Tag.all_dietary_tags, :id, :name %></div><br>
 <%= f.hidden_field :starter_recipe_id, :value => @original_recipe.id%>
 <%= f.hidden_field :user_id, :value => @user.id %>
-<%=f.submit "Save Your Version of the Recipe"%><br></h2>
+<%=f.submit "Save Your Version of the Recipe"%><br></h4>
 <%end%>

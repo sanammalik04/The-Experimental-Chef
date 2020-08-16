@@ -18,7 +18,39 @@ vg = Tag.new(name: "Vegetarian", dietary?: true )
 kosher = Tag.new(name: "Kosher", dietary?: true )
 halal = Tag.new(name: "Halal", dietary?: true )
 
-User.create(name: "Sanam", user_name: "Sanam04", password: "password")
+sanam = User.create(name: "Sanam", user_name: "Sanam04", password: "password")
+User.create(name: "Sania", user_name: "Saniaz97", password: "sania")
+
+butter_chicken = Recipe.create(
+    is_starter?: true,
+    chef_name: "Layla",
+    name: "Butter Chicken",
+    description: "Quick 20-minute butter chicken is creamy and packed full of flavor. It’s simplified and cooked all in one pan and goes great with a side of rice or naan!",
+    serving_size: 4,
+    calorie_count: 491,
+    ingredients: "1 tablespoon oil
+                    1 tablespoon butter
+                    1 medium onion diced
+                    1 teaspoon fresh ginger finely minced or grated (or use paste)
+                    2-3 cloves garlic finely minced or crushed
+                    1 ½ pounds about 2-3 boneless, skinless chicken breasts, cut into ¾-inch chunks
+                    4 tablespoons tomato paste or 8 oz can of tomato sauce
+                    1 tablespoon garam masala
+                    1 teaspoon chili powder or paprika, adjust to taste
+                    1 teaspoon Fenugreek I use powder, but seeds or mustard seeds can be used too, optional*
+                    1 teaspoon cumin
+                    1 tsp salt
+                    1/4 tsp black pepper
+                    1 cup heavy cream sub for half & half or yogurt for low fat
+                    Hot cooked rice and naan for serving",
+                    image_url: "https://i2.wp.com/gimmedelicious.com/wp-content/uploads/2020/01/Butter-chicken.jpg",
+                    instructions: "Heat a large skillet or medium saucepan over medium-high heat. Add the oil, butter, and onions and cook onions down until lightly golden, about 3-4 minutes. Add ginger and garlic and let cook for 30 seconds, stirring so it doesn’t burn.
+                    Add the chicken, tomato paste, and spices. Cook for 5-6 minutes or until everything is cooked through.
+                    Add the heavy cream and simmer for 8-10 minutes stirring occasionally. Serve over Basmati rice or with naan."
+)
+
+butter_chicken.tags << [pakistani, halal]
+
 starter_recipe = Recipe.create(
             is_starter?: true,
             chef_name: "Nigella Lawson",
@@ -41,7 +73,7 @@ starter_recipe = Recipe.create(
             2 garlic cloves, peeled
             1 teaspoon dried oregano
             1 tablespoon unsalted butter",
-            image_url: "https://static01.nyt.com/images/2017/04/05/dining/05COOKING-NIGMEATBALLS2/05COOKING-NIGMEATBALLS2-articleLarge.jpg",
+            image_url:"https://static01.nyt.com/images/2017/04/05/dining/05COOKING-NIGMEATBALLS2/05COOKING-NIGMEATBALLS2-articleLarge.jpg",
             instructions: "Step 1: Prepare meatballs: In a large bowl, combine pork, beef, egg, Parmesan, garlic, oregano, bread crumbs, salt and pepper to taste. Mix thoroughly but lightly, handling mixture as little as possible.
             Step 2: Line a baking sheet with plastic wrap. Shape rounded teaspoonfuls of meat mixture into balls 1 inch in diameter, and place on plastic. Refrigerate while making sauce.
             Step 3: Prepare sauce: Combine onion, garlic and oregano in a food processor, and puree until smooth. Combine butter and oil in a wide, deep pan, and place over low heat until butter melts. Add onion-garlic mixture. Simmer, stirring occasionally, about 10 minutes; do not brown. Add passata and 2 cups water to pan. Season with sugar, and salt and pepper to taste.
@@ -75,3 +107,5 @@ starter_recipe = Recipe.create(
         Step 5: Adjust seasonings to taste. Place hot pasta in a large serving bowl. Pour most of sauce (reserving meatballs) on pasta, and toss to combine. Top pasta with meatballs, and serve.")
 
         modified_recipe.tags << [pakistani, halal]
+
+        sanam.recipes << [modified_recipe]

@@ -1,14 +1,25 @@
 <h1><%= @recipe.name %></h1>
 
 
-    <% if @recipe.cuisines.empty? == false %>
+    <% if @recipe_cuisines.empty? == false %>
         <h3>Cuisine Type(s):</h3>
             <ul>
-                <% @recipe.cuisines.each do |cuisine|%>
+                <% @recipe_cuisines.each do |cuisine|%>
                     <li><%= "#{cuisine.name}"%></li>
                 <% end %>
             </ul>
         <% end %>
+
+        <% if @dietary_tags.empty? == false %>
+        <h3>Dietary Type(s):</h3>
+            <ul>
+                <% @dietary_tags.each do |dietary|%>
+                    <li><%= "#{dietary.name}"%></li>
+                <% end %>
+            </ul>
+        <% end %>
+
+    
 
 
 <h4>Chef: <%= @recipe.chef_name%></h4>
