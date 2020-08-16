@@ -12,6 +12,8 @@
 <%=f.text_field :serving_size, value: @original_recipe.serving_size%><br>
 <%= f.label :calorie_count%><br>
 <%=f.text_field :calorie_count%><br>
+<%= f.label :ingredients%><br>
+<%=f.text_area :ingredients, value: @original_recipe.ingredients%><br>
 <%= f.label :instructions%><br>
 <%=f.text_area :instructions, value: @original_recipe.instructions%><br>
 <%= f.label :chef_name, "Your Name"%><br>

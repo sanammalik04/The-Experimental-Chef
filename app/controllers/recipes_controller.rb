@@ -6,7 +6,10 @@ class RecipesController < ApplicationController
 
     def show
         @recipe = Recipe.find(params[:id])
+        @ingredients_lines = @recipe.ingredients.split("\n")
         @steps = @recipe.instructions.split("\n")
+        @recipe_cuisines = @recipe.cuisines
+        @dietary_tags = @recipe.dietary_tags
         if @recipe.is_starter? == false &&
             @recipe.chef_name == nil
             @recipe.chef_name = @recipe.user.name
@@ -28,7 +31,7 @@ class RecipesController < ApplicationController
     private
 
     def recipe_params
-        params.require(:recipe).permit(:starter_recipe_id, :name, :description, :image_url, :serving_size, :calorie_count, :instructions, :chef_name, :user_id).with_defaults(is_starter?: false)
+        params.require(:recipe).permit(:starter_recipe_id, :name, :description, :image_url, :serving_size, :calorie_count, :instructions, :chef_name, :user_id, :ingredients).with_defaults(is_starter?: false)
     end
 
 
