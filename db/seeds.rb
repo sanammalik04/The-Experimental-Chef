@@ -118,7 +118,7 @@ starter_recipe = Recipe.create(
 
         sanam.recipes << [modified_recipe]
 
-
+        # Japanese recipes
         response1 = RestClient.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=268fdcae8c61449b81b0956a696f6b04&addRecipeInformation=true&fillIngredients=true&cuisine=Japanese")
         japanese = JSON.load(response1)
         
@@ -140,18 +140,24 @@ starter_recipe = Recipe.create(
                 all_tags = japanese["results"][0]["cuisines"].map do |cuisine|
                     tag = Tag.find_or_create_by(name: cuisine, cuisine?: true)
                 end 
-                # diet_tags = []
-                # if japanese["results"][0]["vegetarian"] == true
-                #      diet_tags << vg
-                # if japanese["results"][0]["glutenFree"] == true
-                #     all_tags << gf
-                # if japanese["results"][0]["dairyFree"] == true
-                #     all_tags <<a df
-                # end
-                # all_tags + diet_tags
         )
 
         japanese["results"][3..6].each do |recipe|
+            diet_tags = []
+            if japanese["results"][0]["vegetarian"] == true
+                 diet_tags << vg
+            end
+            if japanese["results"][0]["glutenFree"] == true
+                diet_tags << gf
+            end
+            if japanese["results"][0]["dairyFree"] == true
+                diet_tags << df
+            end
+
+            cuisine_tags = recipe["cuisines"].map do |cuisine|
+                tag = Tag.find_or_create_by(name: cuisine, cuisine?: true)
+            end 
+
             Recipe.create!(
             is_starter?: true,
             name: recipe["title"],
@@ -167,9 +173,7 @@ starter_recipe = Recipe.create(
                     ingredient["originalString"]
                 end.join("\n"),
             tags: 
-                all_tags = recipe["cuisines"].map do |cuisine|
-                    tag = Tag.find_or_create_by(name: cuisine, cuisine?: true)
-                end 
+                cuisine_tags + diet_tags
         )
         end
 
