@@ -1,13 +1,14 @@
 <h1><%= @recipe.name %></h1>
 
-<h3>Cuisine Type(s):</h3>
+
     <% if @recipe.cuisines.empty? == false %>
-    <ul>
-        <% @recipe.cuisines.each do |cuisine|%>
-            <li><%= "#{cuisine.name}"%></li>
+        <h3>Cuisine Type(s):</h3>
+            <ul>
+                <% @recipe.cuisines.each do |cuisine|%>
+                    <li><%= "#{cuisine.name}"%></li>
+                <% end %>
+            </ul>
         <% end %>
-    </ul>
-    <% end %>
 
 
 <h4>Chef: <%= @recipe.chef_name%></h4>
