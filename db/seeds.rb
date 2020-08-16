@@ -5,9 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'rest-client'
+require 'net/http'
+require 'open-uri'
+require 'json'
+
 User.destroy_all
 Recipe.destroy_all
 Tag.destroy_all
+
 
 italian = Tag.new(name: "Italian",cuisine?: true)
 pakistani = Tag.new(name: "Pakistani", cuisine?: true)
@@ -17,6 +23,8 @@ gf = Tag.new(name: "Gluten-Free", dietary?: true)
 vg = Tag.new(name: "Vegetarian", dietary?: true )
 kosher = Tag.new(name: "Kosher", dietary?: true )
 halal = Tag.new(name: "Halal", dietary?: true )
+df = Tag.new(name: "Dairy-Free", dietary?: true)
+
 
 sanam = User.create(name: "Sanam", user_name: "Sanam04", password: "password")
 User.create(name: "Sania", user_name: "Saniaz97", password: "sania")
@@ -109,3 +117,68 @@ starter_recipe = Recipe.create(
         modified_recipe.tags << [pakistani, halal]
 
         sanam.recipes << [modified_recipe]
+
+
+        response = RestClient.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=268fdcae8c61449b81b0956a696f6b04&addRecipeInformation=true&fillIngredients=true&cuisine=Japanese")
+        data = JSON.load(response)
+        
+        Recipe.create(
+            is_starter?: true,
+            name: data["results"][0]["title"],
+            description: data["results"][0]["summary"],
+            serving_size: data["results"][0]["servings"],
+            image_url: data["results"][0]["image"],
+            instructions: 
+                data["results"][0]["analyzedInstructions"][0]["steps"].map do |step|
+                    "Step #{step["number"]}: #{step["step"]}"
+                end.join("\n"),
+            ingredients: 
+                data["results"][0]["extendedIngredients"].map do |ingredient|
+                    ingredient["originalString"]
+                end.join("\n"),
+            tags: 
+                all_tags = data["results"][0]["cuisines"].map do |cuisine|
+                    tag = Tag.find_or_create_by(name: cuisine, cuisine?: true)
+                end 
+                # diet_tags = []
+                # if data["results"][0]["vegetarian"] == true
+                #      diet_tags << vg
+                # if data["results"][0]["glutenFree"] == true
+                #     all_tags << gf
+                # if data["results"][0]["dairyFree"] == true
+                #     all_tags << df
+                # end
+                # all_tags + diet_tags
+        )
+
+        data["results"][3..6].each do |recipe|
+            Recipe.create!(
+            is_starter?: true,
+            name: recipe["title"],
+            description: recipe["summary"],
+            serving_size: recipe["servings"],
+            image_url: recipe["image"],
+            instructions: 
+                recipe["analyzedInstructions"][0]["steps"].map do |step|
+                    "Step #{step["number"]}: #{step["step"]}"
+                end.join("\n"),
+            ingredients: 
+                recipe["extendedIngredients"].map do |ingredient|
+                    ingredient["originalString"]
+                end.join("\n"),
+            tags: 
+                all_tags = recipe["cuisines"].map do |cuisine|
+                    tag = Tag.find_or_create_by(name: cuisine, cuisine?: true)
+                end 
+                # diet_tags = []
+                # if data["results"][0]["vegetarian"] == true
+                #      diet_tags << vg
+                # if data["results"][0]["glutenFree"] == true
+                #     all_tags << gf
+                # if data["results"][0]["dairyFree"] == true
+                #     all_tags << df
+                # end
+                # all_tags + diet_tags
+        )
+        end
+
