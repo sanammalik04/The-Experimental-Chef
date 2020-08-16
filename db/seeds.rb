@@ -1,5 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+# This file should contain all the record creation needed to seed the japanesebase with its default values.
+# The japanese can then be loaded with the rails db:seed command (or created alongside the japanesebase with db:setup).
 #
 # Examples:
 #
@@ -119,39 +119,39 @@ starter_recipe = Recipe.create(
         sanam.recipes << [modified_recipe]
 
 
-        response = RestClient.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=268fdcae8c61449b81b0956a696f6b04&addRecipeInformation=true&fillIngredients=true&cuisine=Japanese")
-        data = JSON.load(response)
+        response1 = RestClient.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=268fdcae8c61449b81b0956a696f6b04&addRecipeInformation=true&fillIngredients=true&cuisine=Japanese")
+        japanese = JSON.load(response1)
         
         Recipe.create(
             is_starter?: true,
-            name: data["results"][0]["title"],
-            description: data["results"][0]["summary"],
-            serving_size: data["results"][0]["servings"],
-            image_url: data["results"][0]["image"],
+            name: japanese["results"][0]["title"],
+            description: japanese["results"][0]["summary"],
+            serving_size: japanese["results"][0]["servings"],
+            image_url: japanese["results"][0]["image"],
             instructions: 
-                data["results"][0]["analyzedInstructions"][0]["steps"].map do |step|
+                japanese["results"][0]["analyzedInstructions"][0]["steps"].map do |step|
                     "Step #{step["number"]}: #{step["step"]}"
                 end.join("\n"),
             ingredients: 
-                data["results"][0]["extendedIngredients"].map do |ingredient|
+                japanese["results"][0]["extendedIngredients"].map do |ingredient|
                     ingredient["originalString"]
                 end.join("\n"),
             tags: 
-                all_tags = data["results"][0]["cuisines"].map do |cuisine|
+                all_tags = japanese["results"][0]["cuisines"].map do |cuisine|
                     tag = Tag.find_or_create_by(name: cuisine, cuisine?: true)
                 end 
                 # diet_tags = []
-                # if data["results"][0]["vegetarian"] == true
+                # if japanese["results"][0]["vegetarian"] == true
                 #      diet_tags << vg
-                # if data["results"][0]["glutenFree"] == true
+                # if japanese["results"][0]["glutenFree"] == true
                 #     all_tags << gf
-                # if data["results"][0]["dairyFree"] == true
-                #     all_tags << df
+                # if japanese["results"][0]["dairyFree"] == true
+                #     all_tags <<a df
                 # end
                 # all_tags + diet_tags
         )
 
-        data["results"][3..6].each do |recipe|
+        japanese["results"][3..6].each do |recipe|
             Recipe.create!(
             is_starter?: true,
             name: recipe["title"],
@@ -170,15 +170,6 @@ starter_recipe = Recipe.create(
                 all_tags = recipe["cuisines"].map do |cuisine|
                     tag = Tag.find_or_create_by(name: cuisine, cuisine?: true)
                 end 
-                # diet_tags = []
-                # if data["results"][0]["vegetarian"] == true
-                #      diet_tags << vg
-                # if data["results"][0]["glutenFree"] == true
-                #     all_tags << gf
-                # if data["results"][0]["dairyFree"] == true
-                #     all_tags << df
-                # end
-                # all_tags + diet_tags
         )
         end
 

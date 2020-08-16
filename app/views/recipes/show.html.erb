@@ -26,7 +26,7 @@
 
 <div>Serving Size: <%= @recipe.serving_size%><div><br>
 
-<div><%= @recipe.description %></div><br>
+<div><%= sanitize @recipe.description %></div><br>
 
 <div><%= image_tag(@recipe.image_url) %></div><br>
 
