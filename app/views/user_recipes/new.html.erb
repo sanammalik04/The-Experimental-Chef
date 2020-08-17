@@ -1,13 +1,22 @@
 <h1><%="Review and Rate #{@original_recipe.name}"%></h1>
 
+<% if @review.errors.any? %>
+    <div id = "error_message">
+        <ul>
+            <% @review.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
 
 <%=form_for @review do |f|%>
-<%=f.label :rating %>
-<%= f.text_field :rating%>
+<%=f.label :rating, "Rating (1-10)" %>
+<%= f.text_field :rating%><br><br>
 <%=f.label :review%>
-<%=f.text_area :review%>
+<%=f.text_area :review%><br><br>
 <%= f.hidden_field :recipe_id, :value => @original_recipe.id%>
-<%= f.hidden_field :user_id, :value => @user.id %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
 <%=f.submit "Submit Review"%>
 <%end%>
 

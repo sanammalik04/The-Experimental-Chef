@@ -7,11 +7,20 @@ class UserRecipesController < ApplicationController
     end
 
     def create
-        review = UserRecipe.create(reviews_params)
-        recipe_id = params["user_recipe"]["recipe_id"]
-        recipe_id = recipe_id.to_i
-        recipe = Recipe.find(recipe_id)
-        redirect_to recipe_path(recipe)
+        @review = UserRecipe.new(reviews_params)
+
+        if @review.valid?
+            @review.save
+            recipe_id = params["user_recipe"]["recipe_id"]
+            recipe_id = recipe_id.to_i
+            recipe = Recipe.find(recipe_id)
+            redirect_to recipe_path(recipe)
+        else 
+            recipe_id = params["user_recipe"]["recipe_id"]
+            recipe_id = recipe_id.to_i
+            @original_recipe = Recipe.find(recipe_id)
+            render :new
+        end
     end
 
     private
