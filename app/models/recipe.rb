@@ -21,19 +21,20 @@ class Recipe < ApplicationRecord
     end 
 
     def average_rating
-        avg = self.reviews.average(:rating)
+        avg = self.reviews.average(:rating).to_f
     end
 
     def self.top_five
         # Go through recipes that have reviews
-        #Recipe.reviews.average(:rating)
-        ratings = []
+        recipes = []
         Recipe.all.each do |recipe|
             if recipe.reviews.any? 
-                ratings << recipe.average_rating
+                recipes << recipe
             end
         end
-        ratings
+        recipes.max_by(5) do |recipe|
+            recipe.average_rating
+        end
     end
 
     def self.japanese

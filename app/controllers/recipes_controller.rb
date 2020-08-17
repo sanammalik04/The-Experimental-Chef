@@ -10,7 +10,10 @@ class RecipesController < ApplicationController
         @df = Recipe.df
         @modified_recipes = Recipe.all_modified
         @indian = Recipe.indian
+        @top_five = Recipe.top_five
         @all_types = [
+            { type: @top_five,
+            type_name: "Top Rated"},
             { type: @japanese,
             type_name: "Japanese"},
             { type: @italian,
