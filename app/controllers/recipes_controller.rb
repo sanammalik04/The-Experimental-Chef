@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
         @gf = Recipe.gf
         @df = Recipe.df
         @modified_recipes = Recipe.all_modified
+        @indian = Recipe.indian
         @all_types = [
             { type: @japanese,
             type_name: "Japanese"},
@@ -16,6 +17,8 @@ class RecipesController < ApplicationController
             type_name: "Italian"},
             { type: @korean,
             type_name: "Korean"},
+            { type: @indian,
+            type_name: "Indian"},
             { type: @gf,
             type_name: "Gluten-Free"},
             { type: @df,

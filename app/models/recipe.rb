@@ -49,4 +49,8 @@ class Recipe < ApplicationRecord
     def self.all_modified
         Recipe.where(is_starter?: false)
     end
+
+    def self.indian
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Indian"})
+    end
 end
