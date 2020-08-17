@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
     belongs_to :starter_recipe, class_name: "Recipe", optional: true
     belongs_to :user, optional: true
     has_and_belongs_to_many :tags
+    has_many :user_recipes
   
 
     def cuisines
@@ -11,5 +12,9 @@ class Recipe < ApplicationRecord
 
     def dietary_tags
         self.tags.where(dietary?: true)
+    end
+
+    def reviews
+        UserRecipe.where(recipe_id:  self.id).where.not(review: nil)
     end
 end

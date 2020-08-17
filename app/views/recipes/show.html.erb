@@ -61,7 +61,14 @@
         <%=link_to @recipe.starter_recipe.name, recipe_path(@recipe.starter_recipe)%>
     <% end %>
 
+    <%=link_to "Review this #{@recipe.name}!", new_user_recipe_path(@recipe) %>
+
+    <% @recipe.reviews.each do |review|%>
     
+         <div>Rating:<%=review.rating%></div>
+        <div>Review:<%=review.review%></div>
+    
+        <%end%>
 
 
 
