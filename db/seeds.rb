@@ -142,15 +142,15 @@ starter_recipe = Recipe.create(
                 end 
         )
 
-        japanese["results"][3..6].each do |recipe|
+        japanese["results"][7..8].each do |recipe|
             diet_tags = []
-            if japanese["results"][0]["vegetarian"] == true
+            if recipe["vegetarian"] == true
                  diet_tags << vg
             end
-            if japanese["results"][0]["glutenFree"] == true
+            if recipe["glutenFree"] == true
                 diet_tags << gf
             end
-            if japanese["results"][0]["dairyFree"] == true
+            if recipe["dairyFree"] == true
                 diet_tags << df
             end
 
@@ -177,3 +177,119 @@ starter_recipe = Recipe.create(
         )
         end
 
+        # Italian Recipes
+
+        response2 = RestClient.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=268fdcae8c61449b81b0956a696f6b04&addRecipeInformation=true&fillIngredients=true&cuisine=Italian")
+        it = JSON.load(response2)
+
+        it["results"][0..4].each do |recipe|
+            diet_tags1 = []
+            if recipe["vegetarian"] == true
+                 diet_tags1 << vg
+            end
+            if recipe["glutenFree"] == true
+                diet_tags1 << gf
+            end
+            if recipe["dairyFree"] == true
+                diet_tags1 << df
+            end
+
+            cuisine_tags1 = recipe["cuisines"].map do |cuisine|
+                tag = Tag.find_or_create_by(name: cuisine, cuisine?: true)
+            end 
+
+            Recipe.create!(
+            is_starter?: true,
+            name: recipe["title"],
+            description: recipe["summary"],
+            serving_size: recipe["servings"],
+            image_url: recipe["image"],
+            instructions: 
+                recipe["analyzedInstructions"][0]["steps"].map do |step|
+                    "Step #{step["number"]}: #{step["step"]}"
+                end.join("\n"),
+            ingredients: 
+                recipe["extendedIngredients"].map do |ingredient|
+                    ingredient["originalString"]
+                end.join("\n"),
+            tags: 
+                cuisine_tags1 + diet_tags1
+        )
+        end
+
+        # Korean recipes
+
+        response3 = RestClient.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=268fdcae8c61449b81b0956a696f6b04&addRecipeInformation=true&fillIngredients=true&cuisine=Korean")
+        kr = JSON.load(response3)
+
+        kr["results"][7..11].each do |recipe|
+            diet_tags1 = []
+            if recipe["vegetarian"] == true
+                 diet_tags1 << vg
+            end
+            if recipe["glutenFree"] == true
+                diet_tags1 << gf
+            end
+            if recipe["dairyFree"] == true
+                diet_tags1 << df
+            end
+
+            cuisine_tags1 = recipe["cuisines"].map do |cuisine|
+                tag = Tag.find_or_create_by(name: cuisine, cuisine?: true)
+            end 
+
+            Recipe.create!(
+            is_starter?: true,
+            name: recipe["title"],
+            description: recipe["summary"],
+            serving_size: recipe["servings"],
+            image_url: recipe["image"],
+            instructions: 
+                recipe["analyzedInstructions"][0]["steps"].map do |step|
+                    "Step #{step["number"]}: #{step["step"]}"
+                end.join("\n"),
+            ingredients: 
+                recipe["extendedIngredients"].map do |ingredient|
+                    ingredient["originalString"]
+                end.join("\n"),
+            tags: 
+                cuisine_tags1 + diet_tags1
+        )
+        end
+
+        kr["results"][0..2].each do |recipe|
+            diet_tags1 = []
+            if recipe["vegetarian"] == true
+                 diet_tags1 << vg
+            end
+            if recipe["glutenFree"] == true
+                diet_tags1 << gf
+            end
+            if recipe["dairyFree"] == true
+                diet_tags1 << df
+            end
+
+            cuisine_tags1 = recipe["cuisines"].map do |cuisine|
+                tag = Tag.find_or_create_by(name: cuisine, cuisine?: true)
+            end 
+
+            Recipe.create!(
+            is_starter?: true,
+            name: recipe["title"],
+            description: recipe["summary"],
+            serving_size: recipe["servings"],
+            image_url: recipe["image"],
+            instructions: 
+                recipe["analyzedInstructions"][0]["steps"].map do |step|
+                    "Step #{step["number"]}: #{step["step"]}"
+                end.join("\n"),
+            ingredients: 
+                recipe["extendedIngredients"].map do |ingredient|
+                    ingredient["originalString"]
+                end.join("\n"),
+            tags: 
+                cuisine_tags1 + diet_tags1
+        )
+        end
+
+        
