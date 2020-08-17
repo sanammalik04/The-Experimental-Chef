@@ -2,6 +2,28 @@ class RecipesController < ApplicationController
 
     def index
         @recipes = Recipe.where(is_starter?: true)
+        @japanese = Recipe.japanese
+        @vegetarian = Recipe.vegetarian
+        @italian = Recipe.italian
+        @korean = Recipe.korean
+        @gf = Recipe.gf
+        @df = Recipe.df
+        @modified_recipes = Recipe.all_modified
+        @all_types = [
+            { type: @japanese,
+            type_name: "Japanese"},
+            { type: @italian,
+            type_name: "Italian"},
+            { type: @korean,
+            type_name: "Korean"},
+            { type: @gf,
+            type_name: "Gluten-Free"},
+            { type: @df,
+            type_name: "Dairy-Free"},
+            { type: @modified_recipes,
+            type_name: "User-Created"},
+        ]
+        
     end
 
     def show

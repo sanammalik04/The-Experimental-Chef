@@ -18,11 +18,35 @@ class Recipe < ApplicationRecord
 
     def reviews
         UserRecipe.where(recipe_id:  self.id).where.not(review: nil)
+    end 
+
     def self.japanese
         #Go through all recipes
         #Find those with tags name: "Japanese"
-        Recipe.all.select do |recipe|
-            recipe.tags.find_by(name:"Japanese") 
-        end
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Japanese"})
+    end
+
+    def self.vegetarian
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Vegetarian"})
+    end
+
+    def self.italian
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Italian"})
+    end
+
+    def self.korean
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Korean"})
+    end
+
+    def self.gf
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Gluten-Free"})
+    end
+
+    def self.df
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Dairy-Free"})
+    end
+
+    def self.all_modified
+        Recipe.where(is_starter?: false)
     end
 end

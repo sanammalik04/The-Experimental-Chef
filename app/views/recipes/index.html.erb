@@ -6,5 +6,13 @@
     </ul>
 <% end %>
 
-<h2>All Japanese Recipes</h2>
+<% @all_types.each do |hash| %>
+    <h2>All <%= hash[:type_name] %> Recipes</h2>
+
+    <% hash[:type].each do |recipe| %>
+        <ul>
+            <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+        </ul>
+    <% end %>
+<% end %>
 
