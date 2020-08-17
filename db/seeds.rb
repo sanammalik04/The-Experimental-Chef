@@ -292,4 +292,85 @@ starter_recipe = Recipe.create(
         )
         end
 
-        
+        # Indian Recipes
+
+        response4 = RestClient.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=268fdcae8c61449b81b0956a696f6b04&addRecipeInformation=true&fillIngredients=true&cuisine=Indian")
+        ind = JSON.load(response4)
+
+        ind["results"][0..4].each do |recipe|
+            diet_tags1 = []
+            if recipe["vegetarian"] == true
+                 diet_tags1 << vg
+            end
+            if recipe["glutenFree"] == true
+                diet_tags1 << gf
+            end
+            if recipe["dairyFree"] == true
+                diet_tags1 << df
+            end
+
+            cuisine_tags1 = recipe["cuisines"].map do |cuisine|
+                tag = Tag.find_or_create_by(name: cuisine, cuisine?: true)
+            end 
+
+            Recipe.create!(
+            is_starter?: true,
+            name: recipe["title"],
+            description: recipe["summary"],
+            serving_size: recipe["servings"],
+            image_url: recipe["image"],
+            instructions: 
+                recipe["analyzedInstructions"][0]["steps"].map do |step|
+                    "Step #{step["number"]}: #{step["step"]}"
+                end.join("\n"),
+            ingredients: 
+                recipe["extendedIngredients"].map do |ingredient|
+                    ingredient["originalString"]
+                end.join("\n"),
+            tags: 
+                cuisine_tags1 + diet_tags1
+        )
+        end
+
+        # Mediterranean recipes
+
+        response5 = RestClient.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=268fdcae8c61449b81b0956a696f6b04&addRecipeInformation=true&fillIngredients=true&cuisine=Mediterranean")
+        med = JSON.load(response5)
+
+        med["results"][0..2].each do |recipe|
+            diet_tags1 = []
+            if recipe["vegetarian"] == true
+                 diet_tags1 << vg
+            end
+            if recipe["glutenFree"] == true
+                diet_tags1 << gf
+            end
+            if recipe["dairyFree"] == true
+                diet_tags1 << df
+            end
+
+            cuisine_tags1 = recipe["cuisines"].map do |cuisine|
+                tag = Tag.find_or_create_by(name: cuisine, cuisine?: true)
+            end 
+
+            Recipe.create!(
+            is_starter?: true,
+            name: recipe["title"],
+            description: recipe["summary"],
+            serving_size: recipe["servings"],
+            image_url: recipe["image"],
+            instructions: 
+                recipe["analyzedInstructions"][0]["steps"].map do |step|
+                    "Step #{step["number"]}: #{step["step"]}"
+                end.join("\n"),
+            ingredients: 
+                recipe["extendedIngredients"].map do |ingredient|
+                    ingredient["originalString"]
+                end.join("\n"),
+            tags: 
+                cuisine_tags1 + diet_tags1
+        )
+        end
+
+
+
