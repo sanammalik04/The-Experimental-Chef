@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   resources :tags
   resources :cookbooks
   resources :user_recipes
