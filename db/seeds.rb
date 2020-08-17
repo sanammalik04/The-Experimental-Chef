@@ -13,6 +13,7 @@ require 'json'
 User.destroy_all
 Recipe.destroy_all
 Tag.destroy_all
+UserRecipe.destroy_all
 
 
 italian = Tag.new(name: "Italian",cuisine?: true)
@@ -25,9 +26,6 @@ kosher = Tag.new(name: "Kosher", dietary?: true )
 halal = Tag.new(name: "Halal", dietary?: true )
 df = Tag.new(name: "Dairy-Free", dietary?: true)
 
-
-sanam = User.create(name: "Sanam", user_name: "Sanam04", password: "password")
-User.create(name: "Sania", user_name: "Saniaz97", password: "sania")
 
 butter_chicken = Recipe.create(
     is_starter?: true,
@@ -116,7 +114,7 @@ starter_recipe = Recipe.create(
 
         modified_recipe.tags << [pakistani, halal]
 
-        sanam.recipes << [modified_recipe]
+        
 
         # Japanese recipes
         response1 = RestClient.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=268fdcae8c61449b81b0956a696f6b04&addRecipeInformation=true&fillIngredients=true&cuisine=Japanese")
@@ -371,6 +369,58 @@ starter_recipe = Recipe.create(
                 cuisine_tags1 + diet_tags1
         )
         end
+
+
+        sanam = User.create(name: "Sanam", user_name: "Sanam04", password: "password")
+        sania = User.create(name: "Sania", user_name: "Saniaz97", password: "sania")
+        christina = User.create(name: "Christina", user_name: "chsohn15", password: "flatiron")
+        sanam.recipes << [modified_recipe]
+        positive_reviews = [
+            "It's amazing!",
+             "Great ingredients!",
+             "A bit bland",
+            "Awesome taste!",
+            "Wonderful",
+            "Will definitely make again",
+            "A hit with my family!!",
+            "Flavorful!",
+            "Delicious!",
+            "Fabulous!",
+            "Stupendous!",
+            "A taste of heaven"
+            ]
+        negative_reviews = [
+            "Took a long time to make, but worth it",
+            "Not my taste",
+            "Too spicy",
+            "Could have been better with some more salt",
+            "Didn't look like the picture",
+            "Difficult to make",
+            "Couldn't find the ingredients",
+            "Too mild",
+            "Too bland",
+            "Takeout would have been better",
+            "Not for beginners"
+        ]
+        20.times do 
+            UserRecipe.create(
+                user: User.all.sample,
+                recipe: Recipe.all.sample,
+                review: positive_reviews.sample,
+                rating: Faker::Number.within(range: 6..10)
+            )
+        end
+
+            20.times do 
+                UserRecipe.create(
+                    user: User.all.sample,
+                    recipe: Recipe.all.sample,
+                    review: negative_reviews.sample,
+                    rating: Faker::Number.within(range: 1..5)
+                )
+            end
+
+        
 
 
 
