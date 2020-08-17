@@ -142,7 +142,7 @@ starter_recipe = Recipe.create(
                 end 
         )
 
-        japanese["results"][7..8].each do |recipe|
+        japanese["results"][5..8].each do |recipe|
             diet_tags = []
             if recipe["vegetarian"] == true
                  diet_tags << vg
