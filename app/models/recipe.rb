@@ -17,8 +17,24 @@ class Recipe < ApplicationRecord
     end
 
     def reviews
-        UserRecipe.where(recipe_id:  self.id).where.not(review: nil)
+        UserRecipe.where(recipe_id:  self.id).where.not(rating: nil)
     end 
+
+    def average_rating
+        avg = self.reviews.average(:rating)
+    end
+
+    def self.top_five
+        # Go through recipes that have reviews
+        #Recipe.reviews.average(:rating)
+        ratings = []
+        Recipe.all.each do |recipe|
+            if recipe.reviews.any? 
+                ratings << recipe.average_rating
+            end
+        end
+        ratings
+    end
 
     def self.japanese
         #Go through all recipes
