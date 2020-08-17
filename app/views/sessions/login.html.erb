@@ -1,0 +1,9 @@
+<h1> Login to View Your Recipes </h1>
+
+<div class= "error"><%=flash[:login_error]%></div>
+
+<%=form_tag login_path do %>
+<%=label_tag :user_name%>
+<%=text_field_tag :user_name%>
+<%=submit_tag "Log In"%> 
+<%end%>
