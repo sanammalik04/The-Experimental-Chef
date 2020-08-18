@@ -19,6 +19,24 @@ class User < ApplicationRecord
         end
     end
 
+    def tag_hash
+        hash = Hash.new(0)
+        self.saved_recipes.each do |recipe|
+            recipe.tags.each do |tag|
+                tag_name = tag[:name]
+                if hash[tag_name] == nil
+                    hash[tag_name] = 1
+                else
+                    hash[tag_name] += 1
+                end
+            end
+        end
+        hash
+    end
 
+    def most_frequent_tag
+        tag_hash.group_by do |k,v|
+            
+    end
     
 end
