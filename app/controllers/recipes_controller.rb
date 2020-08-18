@@ -29,7 +29,7 @@ class RecipesController < ApplicationController
             { type: @modified_recipes,
             type_name: "User-Created"},
         ]
-        
+        @user_recommendations = current_user.recommended_recipes
     end
 
     def show

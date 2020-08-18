@@ -35,8 +35,12 @@ class User < ApplicationRecord
     end
 
     def most_frequent_tag
-        tag_hash.group_by do |k,v|
-            
+        tag = tag_hash.max_by{|k,v| v}
+        tag_name = tag[0]
+    end
+
+    def recommended_recipes
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: most_frequent_tag}).limit(5)
     end
     
 end
