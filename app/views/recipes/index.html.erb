@@ -1,12 +1,4 @@
-<h1>All Starter Recipes</h1>
-
-
-<% @recipes.each do |recipe| %>
-    <ul>
-        <li><%= link_to recipe.name, recipe_path(recipe) %></li>
-    </ul>
-<% end %>
-
+  
 <% @all_types.each do |hash| %>
     <h2>All <%= hash[:type_name] %> Recipes</h2>
 
@@ -15,6 +7,14 @@
             <li><%= link_to recipe.name, recipe_path(recipe) %></li>
         </ul>
     <% end %>
+<% end %>
+
+<h1>All Starter Recipes</h1>
+
+<% @recipes.each do |recipe| %>
+    <ul>
+        <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+    </ul>
 <% end %>
 
 
