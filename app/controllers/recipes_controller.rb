@@ -11,7 +11,11 @@ class RecipesController < ApplicationController
         @modified_recipes = Recipe.all_modified
         @indian = Recipe.indian
         @top_five = Recipe.top_five
-        @rec_recipes = current_user.recommended_recipes
+        if current_user.saved_recipes == []
+            @rec_recipes = []
+        else 
+            @rec_recipes = current_user.recommended_recipes
+        end
         @all_types = [
             { type: @top_five,
             type_name: "Top Rated"},

@@ -2,6 +2,8 @@ class User < ApplicationRecord
     has_many :user_recipes
     has_many :recipes
     has_secure_password
+    validates :password, length: {minimum: 6, message: "must be at least 6 characters long"}
+    validates :user_name, uniqueness: {case_sensitive: false, message: "is already taken"}
 
     def saved_recipes
         user_recipes = UserRecipe.where(user_id: self.id, saved: true)

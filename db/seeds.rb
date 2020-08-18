@@ -371,9 +371,9 @@ starter_recipe = Recipe.create(
         end
 
 
-        sanam = User.create(name: "Sanam", user_name: "Sanam04", password: "password")
-        sania = User.create(name: "Sania", user_name: "Saniaz97", password: "sania")
-        christina = User.create(name: "Christina", user_name: "chsohn15", password: "flatiron")
+        sanam = User.create(name: "Sanam", user_name: "Sanam04", password_digest: BCrypt::Password.create('password'))
+        sania = User.create(name: "Sania", user_name: "Saniaz97", password_digest: BCrypt::Password.create('password'))
+        christina = User.create(name: "Christina", user_name: "chsohn15", password_digest: BCrypt::Password.create('password'))
         sanam.recipes << [modified_recipe]
         positive_reviews = [
             "It's amazing!",
