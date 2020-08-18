@@ -24,6 +24,7 @@
                         <input type="checkbox"><%= line %><br>
                 <% end %> 
             </ul>
+            <%= button_to "Remove Recipe from Grocery List", grocery_remove_path(recipe[:id]), method: :patch %><br>
         <% end %>
         </div>
 
