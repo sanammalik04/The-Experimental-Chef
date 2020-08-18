@@ -13,8 +13,6 @@ class RecipesController < ApplicationController
         @top_five = Recipe.top_five
         @rec_recipes = current_user.recommended_recipes
         @all_types = [
-            {type: @rec_recipes,
-            type_name: "Recommended Recipes Based on Your Interest In #{current_user.most_frequent_tag}"},
             { type: @top_five,
             type_name: "Top Rated"},
             { type: @japanese,

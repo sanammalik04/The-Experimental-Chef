@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         if @user.valid? 
             @user.save
         session[:user_id]= @user.id
-        recirect_to recipes_path
+        redirect_to recipes_path
         else
             render :new
         end

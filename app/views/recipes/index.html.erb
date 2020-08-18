@@ -1,4 +1,13 @@
-  
+  <% unless current_user.saved_recipes.nil?%>
+  <% @rec_recipes.each do |recipe| %>
+        <ul>
+                <%= image_tag(recipe.image_url, size: "200x190")%>
+            <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+        </ul>
+    <% end %>
+    <%end%>
+
+
 <% @all_types.each do |hash| %>
     <h2><%= hash[:type_name] %> Recipes</h2>
 
