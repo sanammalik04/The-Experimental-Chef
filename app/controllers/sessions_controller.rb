@@ -8,11 +8,11 @@ class SessionsController < ApplicationController
 
     def process_login
         @user = User.find_by(user_name: params[:user_name])
-        if @user
+        if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             redirect_to recipes_path
         else
-            flash.now[:login_error] = "Invalid User Name"
+            flash.now[:login_error] = "No User Found With Those Credentials"
             render :login
         end
     end
