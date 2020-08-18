@@ -16,3 +16,15 @@
 
 <h3>My Grocery List<h3>
 
+
+    <% @user_grocery_list.each do |recipe| %>
+        <div><%= link_to recipe[:name], recipe_path(recipe[:id]) %>
+            <ul>
+                <% recipe[:ingredients].each do |line| %></li>
+                        <input type="checkbox"><%= line %><br>
+                <% end %> 
+            </ul>
+        <% end %>
+        </div>
+
+

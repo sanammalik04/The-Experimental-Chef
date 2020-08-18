@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#process_login'
   delete '/logout', to: 'sessions#logout'
   patch '/user_recipes/:id/save', to: "user_recipes#save", as: "save"
+  patch '/user_recipes/:id/add_to_grocery_list', to: "user_recipes#add_to_grocery_list", as: "grocery"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

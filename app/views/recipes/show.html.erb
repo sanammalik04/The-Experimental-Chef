@@ -42,7 +42,7 @@
         <div><%= line %> <br>
     <% end %>
 
-    <button>Add ingredients to my grocery list</button>
+    <h3><%= button_to "Save These Ingredients to Your Grocery List!", grocery_path(@recipe), method: :patch %><h3>
     
     <h2>Instructions: </h2>
     <div>
