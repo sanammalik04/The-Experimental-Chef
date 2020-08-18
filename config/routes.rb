@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   patch '/user_recipes/:id/save', to: "user_recipes#save", as: "save"
   patch '/user_recipes/:id/add_to_grocery_list', to: "user_recipes#add_to_grocery_list", as: "grocery"
   patch '/user_recipes/:id/remove_from_grocery_list', to: "user_recipes#remove_from_grocery_list", as: "grocery_remove"
+  get '/all_recipes', to: 'recipes#all_recipes', as: "all_recipes"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

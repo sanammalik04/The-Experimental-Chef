@@ -58,6 +58,11 @@ class RecipesController < ApplicationController
         redirect_to recipe_path(recipe)
     end
 
+    def all_recipes
+        @recipes = Recipe.all
+    end
+
+
     private
 
     def recipe_params

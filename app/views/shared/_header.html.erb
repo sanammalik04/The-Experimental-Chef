@@ -2,7 +2,8 @@
     <% unless params[:controller] == "sessions" && params[:action] == "login"%>
     <% if logged_in?%>
     Welcome, <%=current_user.user_name%>!
-    <%=link_to "All Recipes", recipes_path %>
+    <%=link_to "Home", recipes_path %>
+    <%=link_to "All Recipes", all_recipes_path %>
     <%=link_to "My Cookbook", user_path(current_user)%>
     <%=link_to "Logout", logout_path, method: :delete%>
     <%else%>

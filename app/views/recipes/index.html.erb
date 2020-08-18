@@ -4,18 +4,12 @@
 
     <% hash[:type].each do |recipe| %>
         <ul>
+                <%= image_tag(recipe.image_url, size: "200x190")%>
             <li><%= link_to recipe.name, recipe_path(recipe) %></li>
         </ul>
     <% end %>
 <% end %>
 
-<h1>All Starter Recipes</h1>
-
-<% @recipes.each do |recipe| %>
-    <ul>
-        <li><%= link_to recipe.name, recipe_path(recipe) %></li>
-    </ul>
-<% end %>
 
 
 
