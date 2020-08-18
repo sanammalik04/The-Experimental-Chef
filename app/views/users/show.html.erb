@@ -6,3 +6,11 @@
         <li><%= link_to recipe.name, recipe_path(recipe) %></li>
     <% end %>
 </ul>
+
+<h3>All My Saved Recipes<h3>
+<ul>
+    <% @user_saved_recipes.each do |recipe| %>
+        <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+    <% end %>
+</ul>
+

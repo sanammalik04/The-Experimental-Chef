@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#process_login'
   delete '/logout', to: 'sessions#logout'
+  patch '/user_recipes/:id/save', to: "user_recipes#save", as: "save"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

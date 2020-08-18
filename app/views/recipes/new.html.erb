@@ -23,6 +23,6 @@
 <%= f.label :dietary_tags, "Dietary Type" %>
 <div><%= f.collection_check_boxes :tag_ids, Tag.all_dietary_tags, :id, :name %></div><br>
 <%= f.hidden_field :starter_recipe_id, :value => @original_recipe.id%>
-<%= f.hidden_field :user_id, :value => @user.id %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
 <%=f.submit "Save Your Version of the Recipe"%><br></h4>
 <%end%>

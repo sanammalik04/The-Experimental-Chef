@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_154614) do
+ActiveRecord::Schema.define(version: 2020_08_17_234258) do
 
   create_table "recipes", force: :cascade do |t|
     t.integer "starter_recipe_id"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_08_17_154614) do
     t.string "review"
     t.integer "rating"
     t.boolean "on_grocery_list", default: false
+    t.boolean "saved", default: false
   end
 
   create_table "users", force: :cascade do |t|

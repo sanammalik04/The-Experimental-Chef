@@ -23,6 +23,14 @@ class UserRecipesController < ApplicationController
         end
     end
 
+    def save
+        r_id = params[:id].to_i
+        user_recipe = UserRecipe.find_or_create_by(recipe_id: r_id, user_id: current_user.id)
+        user_recipe.update(saved: true)
+        user_recipe.save
+        redirect_to user_path(current_user)
+    end
+
     private
 
     def reviews_params
