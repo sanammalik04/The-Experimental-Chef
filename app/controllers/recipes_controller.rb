@@ -11,9 +11,9 @@ class RecipesController < ApplicationController
         @modified_recipes = Recipe.all_modified
         @indian = Recipe.indian
         @top_five = Recipe.top_five
-        if current_user.saved_recipes == []
+        if logged_in? && current_user.saved_recipes == []
             @rec_recipes = []
-        else 
+        elsif logged_in?
             @rec_recipes = current_user.recommended_recipes
         end
         @all_types = [

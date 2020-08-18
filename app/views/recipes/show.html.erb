@@ -41,8 +41,9 @@
     <% @ingredients_lines.each do |line| %></div>
         <div><%= line %> <br>
     <% end %>
-
-    <h3><%= button_to "Save These Ingredients to Your Grocery List!", grocery_path(@recipe), method: :patch %><h3>
+    <% if logged_in? %>
+        <h3><%= button_to "Save These Ingredients to Your Grocery List!", grocery_path(@recipe), method: :patch %><h3>
+    <% end %>
     
     <h2>Instructions: </h2>
     <div>
@@ -51,28 +52,34 @@
         <% end %>
     </div>
 
-    <% if @recipe.is_starter? == true%>
-        <h3><%= link_to "Save This Recipe to Your Cookbook!", save_path(@recipe), method: :patch %><h3>
-        <h3><%= link_to "Create your own #{@recipe.name} Fusion Recipe!", new_recipe_path(@recipe) %></h3>
-        <h3>Browse Our Users' Unique Twists on "<%= @recipe.name %>":</h3>
-    <h2><%@recipe.modified_recipes.each do |modified_recipe|%></h2>
-        <ul>
-            <li><%=link_to modified_recipe.name, recipe_path(modified_recipe) %></li>
-        </ul>
-    <% end %>
-    <% elsif @recipe.is_starter? == false %>
-        <h3>Original Recipe:</h3>
-        <%=link_to @recipe.starter_recipe.name, recipe_path(@recipe.starter_recipe)%>
+    <% if logged_in? %>
+        <% if @recipe.is_starter? == true%>
+            <h3><%= link_to "Save This Recipe to Your Cookbook!", save_path(@recipe), method: :patch %><h3>
+            <h3><%= link_to "Create your own #{@recipe.name} Fusion Recipe!", new_recipe_path(@recipe) %></h3>
+            <h3>Browse Our Users' Unique Twists on "<%= @recipe.name %>":</h3>
+        <h2><%@recipe.modified_recipes.each do |modified_recipe|%></h2>
+            <ul>
+                <li><%=link_to modified_recipe.name, recipe_path(modified_recipe) %></li>
+            </ul>
+        <% end %>
+        <% elsif @recipe.is_starter? == false %>
+            <h3>Original Recipe:</h3>
+            <%=link_to @recipe.starter_recipe.name, recipe_path(@recipe.starter_recipe)%>
+        <% end %>
+
+        <%=link_to "Review this #{@recipe.name}!", new_user_recipe_path(@recipe) %>
+
+    <% else %>
+        <div class="reviews">
+            <% @recipe.reviews.each do |review|%>
+                <div>User Rating:<%=review.rating%></div>
+                <div>Review:<%=review.review%></div><br>
+            <%end%>
+        </div>
+        <h2><%= link_to "Log in", login_path %> or <%= link_to "make an account", new_user_path %> to make your own recipes, save them to your cookbook, and write reviews!</h2>
     <% end %>
 
-    <%=link_to "Review this #{@recipe.name}!", new_user_recipe_path(@recipe) %>
 
-    <% @recipe.reviews.each do |review|%>
-    
-         <div>Rating:<%=review.rating%></div>
-        <div>Review:<%=review.review%></div>
-    
-        <%end%>
 
 
 

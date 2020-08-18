@@ -1,6 +1,9 @@
 class UserRecipesController < ApplicationController
 
+    before_action :authorized, only: [:new]
+    
     def new
+ 
         @original_recipe = Recipe.find(params[:format])
         @review = UserRecipe.new
         @user = User.first

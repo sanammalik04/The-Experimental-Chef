@@ -1,4 +1,4 @@
- <% unless @rec_recipes == [] %>
+ <% unless @rec_recipes == [] || @rec_recipes == nil %>
     <h2><%= "Recommendations Based on Your Interest in #{current_user.most_frequent_tag} Recipes"%></h2>
     <% @rec_recipes.each do |recipe| %>
         <ul>
