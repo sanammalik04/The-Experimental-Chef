@@ -40,34 +40,34 @@ class Recipe < ApplicationRecord
     def self.japanese
         #Go through all recipes
         #Find those with tags name: "Japanese"
-        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Japanese"})
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Japanese"}).limit(3)
     end
 
     def self.vegetarian
-        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Vegetarian"})
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Vegetarian"}).limit(3)
     end
 
     def self.italian
-        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Italian"})
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Italian"}).limit(3)
     end
 
     def self.korean
-        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Korean"})
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Korean"}).limit(3)
     end
 
     def self.gf
-        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Gluten-Free"})
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Gluten-Free"}).limit(3)
     end
 
     def self.df
-        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Dairy-Free"})
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Dairy-Free"}).limit(3)
     end
 
     def self.all_modified
-        Recipe.where(is_starter?: false)
+        Recipe.where(is_starter?: false).limit(3)
     end
 
     def self.indian
-        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Indian"})
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Indian"}).limit(3)
     end
 end

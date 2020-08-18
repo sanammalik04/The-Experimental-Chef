@@ -1,6 +1,6 @@
   
 <% @all_types.each do |hash| %>
-    <h2>All <%= hash[:type_name] %> Recipes</h2>
+    <h2><%= hash[:type_name] %> Recipes</h2>
 
     <% hash[:type].each do |recipe| %>
         <ul>
