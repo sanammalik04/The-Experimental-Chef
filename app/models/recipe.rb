@@ -70,4 +70,8 @@ class Recipe < ApplicationRecord
     def self.indian
         Recipe.joins(recipes_tags: :tag).where(tags:{name: "Indian"}).limit(3)
     end
+
+    def self.alphabetized
+        Recipe.order('lower(name) ASC').all
+    end
 end

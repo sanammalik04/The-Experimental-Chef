@@ -54,7 +54,6 @@
 
     <% if logged_in? %>
         <% if @recipe.is_starter? == true%>
-            <h3><%= link_to "Save This Recipe to Your Cookbook!", save_path(@recipe), method: :patch %><h3>
             <h3><%= link_to "Create your own #{@recipe.name} Fusion Recipe!", new_recipe_path(@recipe) %></h3>
             <h3>Browse Our Users' Unique Twists on "<%= @recipe.name %>":</h3>
         <h2><%@recipe.modified_recipes.each do |modified_recipe|%></h2>
@@ -66,7 +65,7 @@
             <h3>Original Recipe:</h3>
             <%=link_to @recipe.starter_recipe.name, recipe_path(@recipe.starter_recipe)%>
         <% end %>
-
+        <h3><%= link_to "Save This Recipe to Your Cookbook!", save_path(@recipe), method: :patch %><h3>
         <%=link_to "Review this #{@recipe.name}!", new_user_recipe_path(@recipe) %>
 
     <% else %>

@@ -61,7 +61,7 @@ class RecipesController < ApplicationController
     end
 
     def all_recipes
-        @recipes = Recipe.all
+        @recipes = Recipe.alphabetized
     end
 
 
