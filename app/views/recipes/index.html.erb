@@ -1,11 +1,13 @@
  <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">The Experimental Chef</h1>
-    <p class="lead">An App Made for Adventurous Foodies Who Love to Add Their Own Twists to Recipes! </p>
+    <div id="header-text">
+      <h1 class="display-4">The Experimental Chef</h1>
+      <p class="lead">An App Made for Adventurous Foodies Who Love to Add Their Own Twists to Recipes! </p>
+    </div>
   </div>
 </div>
  <% unless @rec_recipes == [] || @rec_recipes == nil %>
-    <h2><%= "Recommendations Based on Your Interest in #{current_user.most_frequent_tag} Recipes"%></h2>
+    <div class="categories"><h2><%= "Recommendations Based on Your Interest in #{current_user.most_frequent_tag} Recipes"%></h2></div>
     <div class="container">
     <div class="row">
     <% @rec_recipes.each do |recipe| %>
@@ -18,15 +20,15 @@
 
 
 <% @all_types.each do |hash| %>
-    <h2>Featured <%= hash[:type_name] %> Recipes</h2>
-    <div class="container">
-    <div class="row">
-    <% hash[:type].each do |recipe| %>
-   
+    <div class="categories"><h2>Featured <strong style="font-size: 33px;"><%= hash[:type_name] %></strong> Recipes</h2></div>
+      <div class="container">
+        <div class="row">
+          <% hash[:type].each do |recipe| %>
                 <div class="col-sm"><%= image_tag(recipe.image_url, size: "200x190")%><br>
-            <%= link_to recipe.name, recipe_path(recipe) %></div>
-     
-    <% end %></div></div>
+                <%= link_to recipe.name, recipe_path(recipe) %></div>
+          <% end %>
+      </div>
+    </div>
 <% end %>
 
 

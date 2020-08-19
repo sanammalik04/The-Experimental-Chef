@@ -32,7 +32,7 @@ class Recipe < ApplicationRecord
                 recipes << recipe
             end
         end
-        recipes.max_by(5) do |recipe|
+        recipes.max_by(4) do |recipe|
             recipe.average_rating
         end
     end

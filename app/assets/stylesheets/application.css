@@ -13,7 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
  .jumbotron {
-    background-image: url("https://www.thespruceeats.com/thmb/0entgFbQY6Wo-ES6Mkr8rQK5K6M=/1916x1437/smart/filters:no_upscale()/GettyImages-480379752-588cb5de3df78caebc869bcf.jpg");
+    background-image: url(https://healthygourmetmiami.com/wp-content/uploads/2017/07/gourmet-catering-1.jpg);
     background-size: cover;
   }
+
+  body{
+    font-family: 'Montserrat', sans-serif;  
+  }
+
+  #header-text{
+      background-color:#F0FFFF;
+      text-align:center;
+  }
+
+  .header{
+    background-color:#F0FFFF;
+  }
+
+  .navbar-nav > li{
+      padding-left:30px;
+      padding-right:30px;
+      color:black; 
+    }
+
+    .categories{
+        text-align:center;
+    }
+
+    .categories.bold-name{
+        font-weight: bold;
+    }
+
+    * {
+        background-color:#F0FFFF;
+    }
+
