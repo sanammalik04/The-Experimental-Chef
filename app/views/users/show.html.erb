@@ -7,16 +7,18 @@
     <% end %>
 </ul>
 
-<h3>All My Saved Recipes<h3>
-<ul>
-    <% @user_saved_recipes.each do |recipe| %>
-        <li><%= link_to recipe.name, recipe_path(recipe) %></li>
-    <% end %>
-</ul>
         <%= form_tag unsave_path(@user.id), :method => :patch do %>
-        <%=label_tag "saved_recipes"%>
-        <ul><%=collection_check_boxes(:recipe, :recipe_ids, @user_saved_recipes, :id, :name)%></ul>
-        <%=submit_tag "Delete Selected Recipes"%>
+            <%=label_tag "saved_recipes", "All My Saved Recipes" %>
+            <%=collection_check_boxes(:recipe, :recipe_ids, @user_saved_recipes, :id, :name) do |b|%>
+                <ul>
+                    <li><%= b.label do  %>
+                        <%= b.check_box %>
+                        <%= link_to b.object.name, recipe_path(b.object.id)%>
+                    <% end %></li>
+                </ul>
+            <% end %>
+
+            <%=submit_tag "Delete Selected Recipes"%>
     <%end%>
 
 <h3>My Grocery List<h3>
