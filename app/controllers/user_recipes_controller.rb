@@ -50,10 +50,23 @@ class UserRecipesController < ApplicationController
         redirect_to user_path(current_user)
     end
 
+    def unsave
+        all_recipe_ids = params[:recipe][:recipe_ids]
+        all_recipe_ids.reject(&:blank?).each do |id|
+            user_recipe = UserRecipe.find_by(recipe_id: id, user_id: current_user.id)
+            user_recipe.update(saved: false)
+            user_recipe.save
+        end
+            redirect_to user_path(current_user) 
+    end
+
+
+
+
     private
 
     def reviews_params
-        params.require(:user_recipe).permit(:user_id, :recipe_id, :review, :rating)
+        params.require(:user_recipe).permit(:user_id, :recipe_id, :review, :rating, :recipe_ids => [])
     end
 
 
