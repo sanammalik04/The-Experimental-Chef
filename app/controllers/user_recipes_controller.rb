@@ -1,6 +1,6 @@
 class UserRecipesController < ApplicationController
 
-    before_action :authorized, only: [:new]
+    before_action :authorized
     
     def new
  

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+    
+    before_action :authorized, only: [:show]
+    
     def show
         @user = User.find(params[:id])
         @user_saved_recipes = @user.saved_recipes
