@@ -1,6 +1,7 @@
 <div class = "header">
     <% unless params[:controller] == "sessions" && params[:action] == "login"%>
     <% if logged_in?%>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
     Welcome to The Experimental Chef, <%=current_user.name%>!
     <%=link_to "Home", recipes_path %>
     <%=link_to "All Recipes", all_recipes_path %>

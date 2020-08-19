@@ -43,7 +43,7 @@ class User < ApplicationRecord
     end
 
     def recommended_recipes
-        Recipe.joins(recipes_tags: :tag).where(tags:{name: most_frequent_tag}).limit(5)
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: most_frequent_tag}).limit(4)
     end
     
 end
