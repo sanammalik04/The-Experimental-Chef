@@ -1,4 +1,4 @@
-<h1>Profile page for <%= @user.user_name %> </h1>
+<h1><%= @user.name %>'s Cookbook </h1>
 
 <h3>All Recipes Created by <%= @user.user_name %><h3>
 <ul>
@@ -10,7 +10,7 @@
         <%= form_tag unsave_path(@user.id), :method => :patch do %>
             <%=label_tag "saved_recipes", "All My Saved Recipes" %>
             <%=collection_check_boxes(:recipe, :recipe_ids, @user_saved_recipes, :id, :name) do |b|%>
-                <ul>
+                <ul class="recipe-list">
                     <li><%= b.label do  %>
                         <%= b.check_box %>
                         <%= link_to b.object.name, recipe_path(b.object.id)%>
