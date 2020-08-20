@@ -74,4 +74,17 @@ class Recipe < ApplicationRecord
     def self.alphabetized
         Recipe.order('lower(name) ASC').all
     end
+
+    def self.search(search)
+        if search
+            search = search.titleize
+            if Tag.find_by(name: search)
+                tag_name = Tag.find_by(name: search).name
+                Recipe.joins(recipes_tags: :tag).where(tags:{name: tag_name})
+            else 
+                return 0
+            end
+        end
+    end 
+
 end

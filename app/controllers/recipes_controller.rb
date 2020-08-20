@@ -61,14 +61,23 @@ class RecipesController < ApplicationController
     end
 
     def all_recipes
-        @recipes = Recipe.alphabetized
+        if params[:search]
+            if Recipe.search(params[:search]) == 0
+                @no_matches = "There were no matches for that search criteria. Try a category such as 'Italian' or 'Gluten-Free'."
+                @recipes = Recipe.alphabetized
+            else
+                @recipes = Recipe.search(params[:search])
+            end
+        else 
+            @recipes = Recipe.alphabetized
+        end
     end
 
 
     private
 
     def recipe_params
-        params.require(:recipe).permit(:starter_recipe_id, :name, :description, :image_url, :serving_size, :calorie_count, :instructions, :chef_name, :user_id, :ingredients, :tag_ids => []).with_defaults(is_starter?: false)
+        params.require(:recipe).permit(:starter_recipe_id, :name, :description, :image_url, :serving_size, :calorie_count, :instructions, :chef_name, :user_id, :ingredients, :search, :tag_ids => []).with_defaults(is_starter?: false)
     end
 
 

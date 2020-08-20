@@ -1,5 +1,13 @@
 <h1>All Recipes</h1>
 
+<h4>Search by Category</h4>
+    <%= form_tag(all_recipes_path, method: :get) do %>
+        <%= text_field_tag(:search, params[:search])%>
+        <%= submit_tag("Search")%>
+    <% end %>
+<% if @no_matches %>
+    <h5><%= @no_matches %></h5>
+<% end %>
 <% @recipes.each do |recipe| %>
     <ul class="recipe-list">
         <li><%= link_to recipe.name, recipe_path(recipe) %></li>
