@@ -67,14 +67,13 @@
         <% end %>
         <h3><%= link_to "Save This Recipe to Your Cookbook!", save_path(@recipe), method: :patch %><h3>
         <%=link_to "Review this #{@recipe.name}!", new_user_recipe_path(@recipe) %>
-
-    <% else %>
         <div class="reviews">
             <% @recipe.reviews.each do |review|%>
                 <div>User Rating:<%=review.rating%></div>
                 <div>Review:<%=review.review%></div><br>
             <%end%>
         </div>
+    <% else %>
         <h2><%= link_to "Log in", login_path %> or <%= link_to "make an account", new_user_path %> to make your own recipes, save them to your cookbook, and write reviews!</h2>
     <% end %>
 

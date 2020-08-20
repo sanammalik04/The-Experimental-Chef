@@ -23,6 +23,7 @@
 
   body{
     font-family: 'Montserrat', sans-serif;  
+    background-color:#F0FFFF;
   }
 
   #header-text{
@@ -62,5 +63,10 @@
     .saved-recipe-list{
         list-style-type: none;
     }
+
+    .brand {
+        color:black !important;
+      }
+    
 
 

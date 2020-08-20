@@ -386,7 +386,7 @@ starter_recipe = Recipe.create(
             "Flavorful!",
             "Delicious!",
             "Fabulous!",
-            "Stupendous!",
+            "Nearly perfection.",
             "A taste of heaven"
             ]
         negative_reviews = [
