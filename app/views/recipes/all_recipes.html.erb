@@ -1,4 +1,10 @@
-<h1>All Recipes</h1>
+ <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div id="header-text-all-recipes">
+      <h1 class="display-4">All Our Recipes</h1>
+    </div>
+  </div>
+</div>
 
 <h4>Search by Category</h4>
     <%= form_tag(all_recipes_path, method: :get) do %>
@@ -10,6 +16,6 @@
 <% end %>
 <% @recipes.each do |recipe| %>
     <ul class="recipe-list">
-        <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+        <li><%= link_to recipe.name, recipe_path(recipe), class:"brand" %></li>
     </ul>
 <% end %>
