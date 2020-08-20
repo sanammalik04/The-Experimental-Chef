@@ -1,11 +1,13 @@
+<div class="recipe-form">
+
 <h1>Create Your Own <%= @original_recipe.name %></h1>
 
 <h4>
 <%= form_for @recipe do |f|%><br>
 <%= f.label :name%><br>
-<%=f.text_field :name, value: @original_recipe.name %><br>
+<%=f.text_field :name %><br>
 <%= f.label :description%><br>
-<%=f.text_area :description, value: @original_recipe.description%><br>
+<%=f.text_area :description%><br>
 <%= f.label :image_url%><br>
 <%=f.text_field :image_url%><br>
 <%= f.label :seving_size%><br>
@@ -13,16 +15,20 @@
 <%= f.label :calorie_count%><br>
 <%=f.text_field :calorie_count%><br>
 <%= f.label :ingredients%><br>
-<%=f.text_area :ingredients, value: @original_recipe.ingredients%><br>
+<%=f.text_area :ingredients, value: @original_recipe.ingredients, style:"width: 700px;
+  height: 200px;"%><br>
 <%= f.label :instructions%><br>
-<%=f.text_area :instructions, value: @original_recipe.instructions%><br>
+<%=f.text_area :instructions, value: @original_recipe.instructions, style:"width: 700px;
+  height: 200px;"%><br>
 <%= f.label :chef_name, "Your Name"%><br>
 <%=f.text_field :chef_name%><br><br>
-<%= f.label :cuisine_tags, "Cuisine Type" %>
-<div><%= f.collection_check_boxes :tag_ids, Tag.all_cuisine_tags, :id, :name %></div><br>
+<%= f.label :cuisine_tags, "Cuisine Type", class:"tag_label" %>
+<%= f.collection_check_boxes :tag_ids, Tag.all_cuisine_tags, :id, :name %><br>
 <%= f.label :dietary_tags, "Dietary Type" %>
-<div><%= f.collection_check_boxes :tag_ids, Tag.all_dietary_tags, :id, :name %></div><br>
+<%= f.collection_check_boxes :tag_ids, Tag.all_dietary_tags, :id, :name %><br>
 <%= f.hidden_field :starter_recipe_id, :value => @original_recipe.id%>
 <%= f.hidden_field :user_id, :value => current_user.id %>
 <%=f.submit "Save Your Version of the Recipe"%><br></h4>
 <%end%>
+
+</div>

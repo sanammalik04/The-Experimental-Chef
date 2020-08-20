@@ -1,16 +1,18 @@
 <div class="jumbotron4 jumbotron-fluid">
   <div class="container">
-    <div id="header-text">
+    <div id="header-text-4">
       <h1 class="display-4">The Experimental Chef</h1>
     </div>
   </div>
 </div>
 
 <div class= "recipe">
-    <h1><%= @recipe.name %></h1>
-
-
-    <div><%= image_tag(@recipe.image_url), %></div><br>
+    <div class="categories">
+        <h1><%= @recipe.name %></h1>
+        <div>
+            <%= image_tag(@recipe.image_url, style:"width:550px;") %>
+        </div><br>
+    </div>
 
 <div class= "box">
     <h4>Average Rating: <%= @recipe.average_rating%>/10</h4>
@@ -36,7 +38,7 @@
                 <% end %>
 
             
-        <h4>Chef: <%= @recipe.chef_name%></h4>
+        <div class="box">Chef: <%= @recipe.chef_name%></div>
 
         <div>Serving Size: <%= @recipe.serving_size%><div><br>
 
@@ -89,7 +91,7 @@
             </div>
 
             <div class= "box">
-                <%= button_to "Create your own #{@recipe.name} Fusion Recipe!", new_recipe_path(@recipe) %>
+                <%= button_to "Create your own #{@recipe.name} Fusion Recipe!", new_recipe_path(@recipe), method: :get %>
             </div>
 
         <% elsif @recipe.is_starter? == false %>
@@ -102,7 +104,7 @@
                 <h3><%= button_to "Save This Recipe to Your Cookbook!", save_path(@recipe), method: :patch %><h3>
         </div>
         <div class= "box">
-                <%=button_to "Review this #{@recipe.name}!", new_user_recipe_path(@recipe) %>
+                <%=button_to "Review this #{@recipe.name}!", new_user_recipe_path(@recipe), method: :get %>
         </div>
 
                 <div class="reviews">
