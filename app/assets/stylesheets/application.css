@@ -79,6 +79,11 @@
     .brand {
         color:black !important;
       }
+
+    .user-form{
+        margin: 0 auto;
+        width:25% /* value of your choice which suits your alignment */
+    }
     
 
 
