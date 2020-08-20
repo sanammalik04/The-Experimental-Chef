@@ -1,32 +1,37 @@
-<h1><%= @recipe.name %></h1>
+<div class= "recipe">
+<div class= "box">
+    <h1><%= @recipe.name %></h1>
+</div>
 
-<h4>Average Rating: <%= @recipe.average_rating%>/10</h4>
+<div class= "box">
+    <h4>Average Rating: <%= @recipe.average_rating%>/10</h4>
+</div>
 
-
-    <% if @recipe_cuisines.empty? == false %>
-        <h3>Cuisine Type(s):</h3>
-            <ul>
-                <% @recipe_cuisines.each do |cuisine|%>
-                    <li><%= "#{cuisine.name}"%></li>
+<div class= "box">
+            <% if @recipe_cuisines.empty? == false %>
+                <h3>Cuisine Type(s):</h3>
+                    <ul>
+                        <% @recipe_cuisines.each do |cuisine|%>
+                            <li><%= "#{cuisine.name}"%></li>
+                        <% end %>
+                    </ul>
                 <% end %>
-            </ul>
-        <% end %>
 
-        <% if @dietary_tags.empty? == false %>
-        <h3>Dietary Type(s):</h3>
-            <ul>
-                <% @dietary_tags.each do |dietary|%>
-                    <li><%= "#{dietary.name}"%></li>
+                <% if @dietary_tags.empty? == false %>
+                <h3>Dietary Type(s):</h3>
+                    <ul>
+                        <% @dietary_tags.each do |dietary|%>
+                            <li><%= "#{dietary.name}"%></li>
+                        <% end %>
+                    </ul>
                 <% end %>
-            </ul>
-        <% end %>
 
-    
+            
+        <h4>Chef: <%= @recipe.chef_name%></h4>
 
+        <div>Serving Size: <%= @recipe.serving_size%><div><br>
 
-<h4>Chef: <%= @recipe.chef_name%></h4>
-
-<div>Serving Size: <%= @recipe.serving_size%><div><br>
+</div>
 
 <div><%= sanitize @recipe.description %></div><br>
 
@@ -35,49 +40,73 @@
 
 <div>Calories Per Serving: <%= @recipe.calorie_count%></div>
 
-<h2>Ingredients:</h2>
-
+<div class= "box">
+    <h2>Ingredients:</h2>
+</div>
 <div>
-    <% @ingredients_lines.each do |line| %></div>
-        <div><%= line %> <br>
+
+<div class= "box">
+    <% @ingredients_lines.each do |line| %>
+        <%= line %> <br>
     <% end %>
+</div> 
     <% if logged_in? %>
+    <div class= "box">
         <h3><%= button_to "Save These Ingredients to Your Grocery List!", grocery_path(@recipe), method: :patch %><h3>
+    </div>
     <% end %>
     
-    <h2>Instructions: </h2>
-    <div>
-        <% @steps.each do |sentence| %>
-            <div><%= sentence%></div><br>
-        <% end %>
+    <div class= "box">
+            <h2>Instructions: </h2>
+            <div>
+                <% @steps.each do |sentence| %>
+                    <div><%= sentence%></div><br>
+                <% end %>
+            </div>
     </div>
-
+    
     <% if logged_in? %>
         <% if @recipe.is_starter? == true%>
-            <h3><%= link_to "Create your own #{@recipe.name} Fusion Recipe!", new_recipe_path(@recipe) %></h3>
-            <h3>Browse Our Users' Unique Twists on "<%= @recipe.name %>":</h3>
-        <h2><%@recipe.modified_recipes.each do |modified_recipe|%></h2>
-            <ul>
-                <li><%=link_to modified_recipe.name, recipe_path(modified_recipe) %></li>
-            </ul>
-        <% end %>
+           
+               
+                Browse Our Users' Unique Twists on "<%= @recipe.name %>":
+           
+            <div class= "box">
+                <%@recipe.modified_recipes.each do |modified_recipe|%>
+                    <ul class = "recipe-list">
+                        <li><%=link_to modified_recipe.name, recipe_path(modified_recipe), class:"brand" %></li>
+                    </ul>
+                <% end %>
+            </div>
+
+            <div class= "box">
+                <%= button_to "Create your own #{@recipe.name} Fusion Recipe!", new_recipe_path(@recipe) %>
+            </div>
+
         <% elsif @recipe.is_starter? == false %>
-            <h3>Original Recipe:</h3>
-            <%=link_to @recipe.starter_recipe.name, recipe_path(@recipe.starter_recipe)%>
-        <% end %>
-        <h3><%= link_to "Save This Recipe to Your Cookbook!", save_path(@recipe), method: :patch %><h3>
-        <%=link_to "Review this #{@recipe.name}!", new_user_recipe_path(@recipe) %>
-        <div class="reviews">
-            <% @recipe.reviews.each do |review|%>
-                <div>User Rating:<%=review.rating%></div>
-                <div>Review:<%=review.review%></div><br>
-            <%end%>
+            <div class = "box">
+                <h3>Original Recipe:</h3>
+                <%=link_to @recipe.starter_recipe.name, recipe_path(@recipe.starter_recipe), class: "brand" %>
+            <% end %>
         </div>
+         <div class= "box">
+                <h3><%= button_to "Save This Recipe to Your Cookbook!", save_path(@recipe), method: :patch %><h3>
+        </div>
+        <div class= "box">
+                <%=button_to "Review this #{@recipe.name}!", new_user_recipe_path(@recipe) %>
+        </div>
+
+                <div class="reviews">
+                    <% @recipe.reviews.each do |review|%>
+                        <div>User Rating:<%=review.rating%></div>
+                        <div>Review:<%=review.review%></div><br>
+                  <%end%>
+                </div>
     <% else %>
         <h2><%= link_to "Log in", login_path %> or <%= link_to "make an account", new_user_path %> to make your own recipes, save them to your cookbook, and write reviews!</h2>
     <% end %>
 
-
+</div>
 
 
 

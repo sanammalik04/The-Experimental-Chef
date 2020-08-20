@@ -70,6 +70,7 @@
 
     .recipe-list{
             list-style-type: none;
+            
     }
 
     .saved-recipe-list{
@@ -87,4 +88,24 @@
     
 .btn{
   width:100%;
+}
+
+#header-text-LogIn{
+  position:absolute;
+    transform: translate(20%, 65%);
+    padding: 25px; 
+}
+
+.cookbook, .all_recipes, .recipe{
+  margin-left: 50px;
+}
+
+.box{
+  padding-bottom: 35px;
+  font-size: 30px;
+}
+
+.usercookbook{
+  text-align: center;
+  padding-top: 50px;
 }

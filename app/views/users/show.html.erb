@@ -1,12 +1,18 @@
-<h1><%= @user.name %>'s Cookbook </h1>
+<div class= "cookbook">
+<div class= "usercookbook">
+    <h1><%= @user.name %>'s Cookbook </h1>
+</div>
 
-<h3>My New Recipe Creations<h3>
-<ul>
-    <% @user.recipes.each do |recipe| %>
-        <li><%= link_to recipe.name, recipe_path(recipe) %></li>
-    <% end %>
-</ul>
+<div class= "box">
+    <h3>My New Recipe Creations<h3>
+    <ul>
+        <% @user.recipes.each do |recipe| %>
+            <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+        <% end %>
+    </ul>
+</div>
 
+<div class = "box">
         <%= form_tag unsave_path(@user.id), :method => :patch do %>
             <%=label_tag "saved_recipes", "Saved Recipes" %>
             <%=collection_check_boxes(:recipe, :recipe_ids, @user_saved_recipes, :id, :name) do |b|%>
@@ -20,7 +26,9 @@
 
             <%=submit_tag "Delete Selected Recipes"%>
     <%end%>
+</div>
 
+<div class = "box">
 <h3>My Grocery List<h3>
 
 
@@ -34,5 +42,6 @@
             <%= button_to "Remove Recipe from Grocery List", grocery_remove_path(recipe[:id]), method: :patch %><br>
         <% end %>
         </div>
+</div>
 
-
+</div>
