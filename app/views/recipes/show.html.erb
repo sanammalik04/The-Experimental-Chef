@@ -1,7 +1,16 @@
-<div class= "recipe">
-<div class= "box">
-    <h1><%= @recipe.name %></h1>
+<div class="jumbotron4 jumbotron-fluid">
+  <div class="container">
+    <div id="header-text">
+      <h1 class="display-4">The Experimental Chef</h1>
+    </div>
+  </div>
 </div>
+
+<div class= "recipe">
+    <h1><%= @recipe.name %></h1>
+
+
+    <div><%= image_tag(@recipe.image_url), %></div><br>
 
 <div class= "box">
     <h4>Average Rating: <%= @recipe.average_rating%>/10</h4>
@@ -35,7 +44,7 @@
 
 <div><%= sanitize @recipe.description %></div><br>
 
-<div><%= image_tag(@recipe.image_url) %></div><br>
+
 
 
 <div>Calories Per Serving: <%= @recipe.calorie_count%></div>

@@ -21,6 +21,15 @@
     min-height: 400px;
   }
 
+  .jumbotron4{
+   background-image: url(https://healthygourmetmiami.com/wp-content/uploads/2017/07/gourmet-catering-1.jpg);
+    min-height: 200px;
+  }
+
+  .recipe-image{
+    width: 500px;
+  }
+
   body{
     font-family: 'Montserrat', sans-serif;  
     background-color:#F0FFFF;

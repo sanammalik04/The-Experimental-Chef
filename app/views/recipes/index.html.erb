@@ -12,7 +12,7 @@
     <div class="row">
     <% @rec_recipes.each do |recipe| %>
 
-                <div class="col-sm"><%= image_tag(recipe.image_url, size: "200x190")%><br>
+                <div class="col-sm"><%= image_tag(recipe.image_url, width: "200px")%><br>
                 <%= link_to recipe.name, recipe_path(recipe), class:'brand' %></div>
         
     <% end %></div></div>
@@ -24,7 +24,7 @@
       <div class="container">
         <div class="row">
           <% hash[:type].each do |recipe| %>
-                <div class="col-sm"><%= image_tag(recipe.image_url, size: "200x190")%><br>
+                <div class="col-sm"><%= image_tag(recipe.image_url, width: "200px")%><br>
                 <%= link_to recipe.name, recipe_path(recipe), class:'brand' %></div>
           <% end %>
       </div>
