@@ -28,8 +28,9 @@
                     <% end %></li>
                 </ul>
             <% end %>
-
-            <%=submit_tag "Delete Selected Recipes"%>
+            <% if current_user.saved_recipes.any? %>
+                <%=submit_tag "Delete Selected Recipes"%>
+            <% end %>
     <%end%>
 </div>
 
