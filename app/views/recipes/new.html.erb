@@ -1,10 +1,18 @@
-<div class="recipe-form">
+<div class="jumbotron4 jumbotron-fluid">
+  <div class="container">
+    <div id="header-text-modify-form">
+      <h1 class="display-4">Make It Your Own!</h1>
+    </div>
+  </div>
+</div>
 
+<div class="recipe-form">
+<br>
 <h1>Create Your Own <%= @original_recipe.name %></h1>
 
 <h4>
 <%= form_for @recipe do |f|%><br>
-<%= f.label :name, "Original Recipe Name"%><br>
+<%= f.label :name, "New Recipe Name"%><br>
 <%=f.text_field :name %><br>
 <%= f.label :description%><br>
 <%=f.text_area :description%><br>

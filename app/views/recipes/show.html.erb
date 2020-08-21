@@ -71,7 +71,7 @@
     <% end %>
     
     <div class= "box">
-            <h2>Instructions: </h2>
+            <h2>Instructions: </h2><br>
             <div>
                 <% @steps.each do |sentence| %>
                     <div><%= sentence%></div><br>
@@ -112,8 +112,8 @@
 
                 <div class="reviews">
                     <% @recipe.reviews.each do |review|%>
-                        <div>User Rating:<%=review.rating%></div>
-                        <div>Review:<%=review.review%></div><br>
+                        <div>User Rating: <%=review.rating%></div>
+                        <div>Review: <%=review.review%></div><br>
                   <%end%>
                 </div>
     <% else %>
