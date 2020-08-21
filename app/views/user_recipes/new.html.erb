@@ -1,6 +1,15 @@
+<div class="jumbotron4 jumbotron-fluid">
+  <div class="container">
+    <div id="header-text-cookbook">
+      <h1 class="display-4">Write a Review!</h1>
+    </div>
+  </div>
+</div>
+
 <div class= "review-page">
+<br>
 <div class="box">
-    <h1><%="Review and Rate #{@original_recipe.name}"%></h1>
+    <h1><%="#{@original_recipe.name}"%></h1>
 </div>
 
 <% if @review.errors.any? %>

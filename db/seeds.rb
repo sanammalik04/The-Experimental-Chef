@@ -25,6 +25,7 @@ vg = Tag.new(name: "Vegetarian", dietary?: true )
 kosher = Tag.new(name: "Kosher", dietary?: true )
 halal = Tag.new(name: "Halal", dietary?: true )
 df = Tag.new(name: "Dairy-Free", dietary?: true)
+indian = Tag.new(name: "Indian", cuisine?: true)
 
 
 butter_chicken = Recipe.create(
@@ -420,7 +421,91 @@ starter_recipe = Recipe.create(
                 )
             end
 
-        
+
+        modified_recipe2 = Recipe.create(starter_recipe: starter_recipe,
+        is_starter?: false,
+        chef_name: "Christina",
+        name: "Simply Spaghetti",
+        ingredients: "
+            FOR THE SAUCE:
+            1 onion, peeled and halved
+            2 garlic cloves, peeled
+            1 teaspoon dried oregano
+            1 tablespoon unsalted butter
+            1 can of diced tomatoes",
+        description: "This is a simple version of spaghetti with no meat.",
+        serving_size: 4,
+        calorie_count: 250,
+        image_url: "https://qph.fs.quoracdn.net/main-qimg-097bfff54a176e1181f5051505540094",
+        instructions: "Step 1: Prepare sauce: Combine onion, garlic and oregano in a food processor, and puree until smooth. Combine butter and oil in a wide, deep pan, and place over low heat until butter melts. Add onion-garlic mixture, cumin, turmeric, red pepper flakes in the sauce. Simmer, stirring occasionally, about 10 minutes; do not brown. Add passata and 2 cups water to pan. Season with sugar, and salt and pepper to taste.
+        Step 2: Simmer for 10 minutes, then bring sauce back to a simmer. 
+        Step 3: Adjust seasonings to taste. Place hot pasta in a large serving bowl. Pour most of sauce on pasta, and toss to combine. Top pasta with meatballs, and serve.")
+
+        modified_recipe2.tags << [vg, italian]
+        christina.recipes << [modified_recipe2]
+
+        modified_recipe3 = Recipe.create(starter_recipe: starter_recipe,
+        is_starter?: false,
+        chef_name: "Sanam",
+        name: "Creamy Spaghetti",
+        ingredients: "
+            FOR THE SAUCE:
+            1 onion, peeled and halved
+            2 garlic cloves, peeled
+            1 teaspoon dried oregano
+            1 tablespoon unsalted butter
+            1 cup mozzarella cheese,
+            I cup parmesan cheese",
+        description: "Here is my cheesy, tomato-free version of spaghetti!",
+        serving_size: 4,
+        calorie_count: 250,
+        image_url: "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/57ae237823b4405f8910299960514033/BFV44742_PantryPasta_FB_Final.jpg",
+        instructions: "Step 1: Prepare sauce: Combine onion, garlic and oregano in a food processor, and puree until smooth. Combine butter and oil in a wide, deep pan, and place over low heat until butter melts. Add onion-garlic mixture, cumin, turmeric, red pepper flakes in the sauce. Simmer, stirring occasionally, about 10 minutes; do not brown. Add passata and 2 cups water to pan. Season with sugar, and salt and pepper to taste.
+        Step 2: Simmer for 10 minutes, then bring sauce back to a simmer. 
+        Step 3: Add mozzarella and parmesan cheese.
+        Step 4: Adjust seasonings to taste. Place hot pasta in a large serving bowl. Pour most of sauce on pasta, and toss to combine. Top pasta with meatballs, and serve.")
+
+        modified_recipe3.tags << [vg, italian]
+        sanam.recipes << [modified_recipe3]
+
+
+    butter_chicken_modified = Recipe.create(
+    starter_recipe: butter_chicken,
+    is_starter?: false,
+    chef_name: "Sanam",
+    name: "Butter Paneer",
+    description: "The perfet recipe for vegetarians, this version substitutes paneer, a tasty Indian cheese, for chicken.",
+    serving_size: 4,
+    calorie_count: 491,
+    ingredients: "1 tablespoon oil
+                    1 tablespoon butter
+                    1 medium onion diced
+                    1 teaspoon fresh ginger finely minced or grated (or use paste)
+                    2-3 cloves garlic finely minced or crushed
+                    8 oz. of paneer
+                    4 tablespoons tomato paste or 8 oz can of tomato sauce
+                    1 tablespoon garam masala
+                    1 teaspoon chili powder or paprika, adjust to taste
+                    1 teaspoon Fenugreek I use powder, but seeds or mustard seeds can be used too, optional*
+                    1 teaspoon cumin
+                    1 tsp salt
+                    1/4 tsp black pepper
+                    1 cup heavy cream sub for half & half or yogurt for low fat
+                    Hot cooked rice and naan for serving",
+                    image_url: "https://i0.wp.com/vegecravings.com/wp-content/uploads/2017/04/paneer-butter-masala-recipe-step-by-step-instructions.jpg?fit=2592%2C1944&quality=65&strip=all&ssl=1",
+                    instructions: "Heat a large skillet or medium saucepan over medium-high heat. Add the oil, butter, and onions and cook onions down until lightly golden, about 3-4 minutes. Add ginger and garlic and let cook for 30 seconds, stirring so it doesn’t burn.
+                    Add the paneer, tomato paste, and spices. Cook for 5-6 minutes or until everything is cooked through.
+                    Add the heavy cream and simmer for 8-10 minutes stirring occasionally. Serve over Basmati rice or with naan."
+)
+
+butter_chicken_modified.tags << [vg, indian, pakistani]
+sanam.recipes << [butter_chicken_modified]
+
+
+
+
+
+
 
 
 

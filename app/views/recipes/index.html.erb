@@ -6,6 +6,7 @@
     </div>
   </div>
 </div>
+<div class= "index">
  <% unless @rec_recipes == [] || @rec_recipes == nil %>
     <div class="categories"><h2><%= "Recommendations Based on Your Interest in #{current_user.most_frequent_tag} Recipes"%></h2></div>
     <div class="container">
@@ -18,7 +19,6 @@
     <% end %></div></div>
 <% end %>
 
-
 <% @all_types.each do |hash| %>
     <div class="categories"><h2>Featured <strong style="font-size: 33px;"><%= hash[:type_name] %></strong> Recipes</h2></div>
       <div class="container">
@@ -30,6 +30,9 @@
       </div>
     </div>
 <% end %>
+
+</div>
+
 
 
 

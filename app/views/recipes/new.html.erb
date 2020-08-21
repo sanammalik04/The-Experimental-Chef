@@ -4,7 +4,7 @@
 
 <h4>
 <%= form_for @recipe do |f|%><br>
-<%= f.label :name%><br>
+<%= f.label :name, "Original Recipe Name"%><br>
 <%=f.text_field :name %><br>
 <%= f.label :description%><br>
 <%=f.text_area :description%><br>
@@ -23,9 +23,18 @@
 <%= f.label :chef_name, "Your Name"%><br>
 <%=f.text_field :chef_name%><br><br>
 <%= f.label :cuisine_tags, "Cuisine Type" %><br>
-<%= f.collection_check_boxes(:tag_ids, Tag.all_cuisine_tags, :id, :name)%><br>
+<%= f.collection_check_boxes(:tag_ids, Tag.all_cuisine_tags, :id, :name) do |b|%>
+  <%= b.label class:"label-checkbox" do %>
+  <%= b.check_box + " " + b.text + "  " %> 
+  <%end%>
+<% end %><br><br>
 <%= f.label :dietary_tags, "Dietary Type" %><br>
-<%= f.collection_check_boxes :tag_ids, Tag.all_dietary_tags, :id, :name %><br>
+<%= f.collection_check_boxes :tag_ids, Tag.all_dietary_tags, :id, :name do |b|%>
+  <%= b.label class:"label-checkbox" do %>
+  <%= b.check_box + " " + b.text + "  " %> 
+  <%end%>
+<% end %>
+<br><br>
 <%= f.hidden_field :starter_recipe_id, :value => @original_recipe.id%>
 <%= f.hidden_field :user_id, :value => current_user.id %>
 <%=f.submit "Save Your Version of the Recipe"%><br></h4>
