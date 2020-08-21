@@ -444,29 +444,7 @@ starter_recipe = Recipe.create(
         modified_recipe2.tags << [vg, italian]
         christina.recipes << [modified_recipe2]
 
-        modified_recipe3 = Recipe.create(starter_recipe: starter_recipe,
-        is_starter?: false,
-        chef_name: "Sanam",
-        name: "Creamy Spaghetti",
-        ingredients: "
-            FOR THE SAUCE:
-            1 onion, peeled and halved
-            2 garlic cloves, peeled
-            1 teaspoon dried oregano
-            1 tablespoon unsalted butter
-            1 cup mozzarella cheese,
-            I cup parmesan cheese",
-        description: "Here is my cheesy, tomato-free version of spaghetti!",
-        serving_size: 4,
-        calorie_count: 250,
-        image_url: "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/57ae237823b4405f8910299960514033/BFV44742_PantryPasta_FB_Final.jpg",
-        instructions: "Step 1: Prepare sauce: Combine onion, garlic and oregano in a food processor, and puree until smooth. Combine butter and oil in a wide, deep pan, and place over low heat until butter melts. Add onion-garlic mixture, cumin, turmeric, red pepper flakes in the sauce. Simmer, stirring occasionally, about 10 minutes; do not brown. Add passata and 2 cups water to pan. Season with sugar, and salt and pepper to taste.
-        Step 2: Simmer for 10 minutes, then bring sauce back to a simmer. 
-        Step 3: Add mozzarella and parmesan cheese.
-        Step 4: Adjust seasonings to taste. Place hot pasta in a large serving bowl. Pour most of sauce on pasta, and toss to combine. Top pasta with meatballs, and serve.")
 
-        modified_recipe3.tags << [vg, italian]
-        sanam.recipes << [modified_recipe3]
 
 
     butter_chicken_modified = Recipe.create(
