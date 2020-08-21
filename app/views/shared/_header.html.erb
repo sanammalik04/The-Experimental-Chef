@@ -1,5 +1,6 @@
-    <% unless params[:controller] == "sessions" && params[:action] == "login"%>
-    <% if logged_in?%>
+<% unless params[:controller] == "sessions" && params[:action] == "login"%>
+
+<% if logged_in?%>
 
 <div class = "header">
 <nav class="navbar navbar-expand-lg">
@@ -44,6 +45,28 @@
   </div>
 </nav>
 <%end%>
+<%end%>
+</div>
+
+<% if params[:controller] == "sessions" && params[:action] == "login"%>
+
+<div class = "header">
+<nav class="navbar navbar-expand-lg">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-item nav-link mx-3" href="#"><%=link_to "Sign up", new_user_path, class:"brand"%></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link mx-3" href="#"><%=link_to "Home", recipes_path, class:"brand" %></a><br>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link mx-3" href="#"><%=link_to "All Recipes", all_recipes_path, class:"brand" %></a><br>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <%end%>
 </div>
 

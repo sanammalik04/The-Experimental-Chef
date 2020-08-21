@@ -56,7 +56,7 @@
   background-color:#F0FFFF;
   text-align:center;
   position:absolute;
-  transform: translate(35%, 30%);
+  transform: translate(32%, 30%);
   padding: 25px; 
 }
 
@@ -111,8 +111,9 @@
     padding: 25px; 
 }
 
-.cookbook, .all_recipes, .recipe, .recipe-form{
+.cookbook, .all_recipes, .recipe, .recipe-form, .review-page{
   margin-left: 50px;
+  margin-right: 50px;
 }
 
 .box{
@@ -128,3 +129,13 @@
 .tag-label{
   padding-left: 1em;
 }
+
+#search{
+  margin-left: 39px;
+}
+
+.recipe-name{
+  padding-top:30px;
+  padding-bottom: 30px;
+}
+

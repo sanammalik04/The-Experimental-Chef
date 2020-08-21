@@ -56,7 +56,7 @@ class Recipe < ApplicationRecord
     end
 
     def self.gf
-        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Gluten-Free"}).limit(4)
+        Recipe.joins(recipes_tags: :tag).where(tags:{name: "Gluten-Free"}).order("RANDOM()").limit(4)
     end
 
     def self.df

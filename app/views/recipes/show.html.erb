@@ -8,17 +8,19 @@
 
 <div class= "recipe">
     <div class="categories">
-        <h1><%= @recipe.name %></h1>
-        <div>
-            <%= image_tag(@recipe.image_url, style:"width:550px;") %>
+        <h1 class="recipe-name">
+            <%= @recipe.name %>
+        </h1>
+        <div class="box">
+            <%= image_tag(@recipe.image_url, style:"width:575px;") %>
         </div><br>
     </div>
 
-<div class= "box">
-    <h4>Average Rating: <%= @recipe.average_rating%>/10</h4>
-</div>
+    <div class= "box">
+        <h4>Average Rating: <%= @recipe.average_rating%>/10</h4>
+    </div>
 
-<div class= "box">
+    <div class= "box">
             <% if @recipe_cuisines.empty? == false %>
                 <h3>Cuisine Type(s):</h3>
                     <ul>
@@ -42,25 +44,26 @@
 
         <div>Serving Size: <%= @recipe.serving_size%><div><br>
 
-</div>
+    </div>
 
-<div><%= sanitize @recipe.description %></div><br>
-
-
+    <div><%= sanitize @recipe.description %></div><br>
 
 
-<div>Calories Per Serving: <%= @recipe.calorie_count%></div>
 
-<div class= "box">
-    <h2>Ingredients:</h2>
-</div>
-<div>
 
-<div class= "box">
-    <% @ingredients_lines.each do |line| %>
-        <%= line %> <br>
-    <% end %>
-</div> 
+    <div>Calories Per Serving: <%= @recipe.calorie_count%></div>
+
+    <div class= "box">
+        <h2>Ingredients:</h2>
+    </div>
+        <div>
+
+    <div class= "box">
+        <% @ingredients_lines.each do |line| %>
+            <%= line %> <br>
+        <% end %>
+    </div> 
+
     <% if logged_in? %>
     <div class= "box">
         <h3><%= button_to "Save These Ingredients to Your Grocery List!", grocery_path(@recipe), method: :patch %><h3>
