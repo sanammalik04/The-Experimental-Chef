@@ -21,7 +21,7 @@ class Recipe < ApplicationRecord
     end 
 
     def average_rating
-        avg = self.reviews.average(:rating).to_f
+        avg = self.reviews.average(:rating).to_f.round(1)
     end
 
     def self.top_five
