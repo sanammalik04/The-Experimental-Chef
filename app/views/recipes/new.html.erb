@@ -22,9 +22,9 @@
   height: 200px;"%><br>
 <%= f.label :chef_name, "Your Name"%><br>
 <%=f.text_field :chef_name%><br><br>
-<%= f.label :cuisine_tags, "Cuisine Type", class:"tag_label" %>
-<%= f.collection_check_boxes :tag_ids, Tag.all_cuisine_tags, :id, :name %><br>
-<%= f.label :dietary_tags, "Dietary Type" %>
+<%= f.label :cuisine_tags, "Cuisine Type" %><br>
+<%= f.collection_check_boxes(:tag_ids, Tag.all_cuisine_tags, :id, :name)%><br>
+<%= f.label :dietary_tags, "Dietary Type" %><br>
 <%= f.collection_check_boxes :tag_ids, Tag.all_dietary_tags, :id, :name %><br>
 <%= f.hidden_field :starter_recipe_id, :value => @original_recipe.id%>
 <%= f.hidden_field :user_id, :value => current_user.id %>
